@@ -1,0 +1,5 @@
+#!/bin/sh
+
+lsblk -e 7
+sudo mount /dev/sdb1 ~/usb
+lsblk -e 7

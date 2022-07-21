@@ -1,0 +1,11 @@
+#!/bin/sh
+#-*- ENCODING: UFT-8 -*-
+
+TOKEN=$(cat ~/.config/token.txt)
+echo -n $TOKEN | xclip -selection c
+
+cat ~/Plantillas/GIT/caducidad.txt
+cat ~/.config/token.txt
+echo "\n"
+
+cal -A 1

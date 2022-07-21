@@ -1,0 +1,5 @@
+sendtoterm-<leader>t	sendtoterm.txt	/*sendtoterm-<leader>t*
+sendtoterm-mappings	sendtoterm.txt	/*sendtoterm-mappings*
+sendtoterm-plugs	sendtoterm.txt	/*sendtoterm-plugs*
+sendtoterm-settings	sendtoterm.txt	/*sendtoterm-settings*
+sendtoterm.txt	sendtoterm.txt	/*sendtoterm.txt*

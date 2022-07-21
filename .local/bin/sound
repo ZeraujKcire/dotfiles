@@ -1,0 +1,3 @@
+#!bin/sh
+
+music-dl --url https://soundcloud.com/$1 --bitrate 320 --codec m4a --dir ~/Música/

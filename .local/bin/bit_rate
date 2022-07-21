@@ -1,0 +1,2 @@
+
+mediainfo (basename $1 | sed 's/ /<space>/g') | grep "Bit rate "

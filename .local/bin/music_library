@@ -1,0 +1,12 @@
+#!/bin/sh
+# Music organizer by tags.
+
+for file in *.mp3 *.m4a *.flac
+do
+	# artist="$(mediainfo "${file}" | grep '^Performer\s*' | sed 's/^.*:\s//g')"
+	album="$(mediainfo "${file}"  | grep '^Album\s*:' | sed 's/^.*:\s//g')"
+	mkdir -p "${album}"
+	# mkdir -p "${artist}/${album}"
+	mv -f "${file}" "${album}"
+	mv -f *.pamp *.jpg *.png  "${album}"
+done

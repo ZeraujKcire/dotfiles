@@ -1,0 +1,20 @@
+shuffle 
+shuffle = true
+shuffle true
+shuffle
+add Música/
+clear
+live-filter 
+cleAR
+add .
+add Música/ERICK/
+add Música/POR_ORDENAR/
+add Música/POR_ORDENAR/*
+add Myth.m4a
+set status_display_program=/home/usuario/.config/cmus/cmus-cover-art/observe.sh
+colorscheme jellybeans
+fset classical=genre="Classical"
+colorscheme gray-88
+colorscheme cyan
+add ERICK/
+add 

@@ -1,0 +1,57 @@
+
+% === DATOS === (((
+\author{\textit{Por Erick I. Rodríguez Juárez.}}
+% \title{\textbf{ . Óptica.}}
+% \title{\textbf{ . Variable Compleja I.}}
+% \title{\textbf{ . Análisis Numérico II.}}
+% \title{\textbf{ . Diseño de Experimentos.}}
+% \title{\textbf{ . Filosofía de la Investigación Científica.}}
+% \date{}
+% )))
+
+% === PAQUETES === (((
+% \usepackage{xltxtra}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+% \usepackage{expl3}
+\usepackage{fontspec}
+\usepackage{fullpage}
+\usepackage{graphicx}
+% )))
+
+% === TIPOGRAFÍA === (((
+\setmainfont[
+  BoldFont       = bodonibi,
+	ItalicFont     = Century modern italic2.ttf,
+	BoldItalicFont = bodonibi,
+	SmallCapsFont  = lmromancaps10-regular.otf
+]{Century_modern.ttf}
+% )))
+
+% === COMANDOS === (((
+\newcommand{\titulo}{
+\addfontfeature{LetterSpace=-5}
+\pagestyle{empty}
+\maketitle 
+\thispagestyle{empty}
+} 
+\newcommand{\dis}{\displaystyle}
+\newcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
+\newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice
+{\vcenter{\hbox{\huge $#1$}}}
+{\vcenter{\hbox{\Large $#1$}}}{#1}{#1}}\displaylimits}
+\newcommand{\suma}{\operator{\includegraphics[scale=0.09]{IMAGENES/Sigma.png}}}
+\setlength{\parindent}{0mm}
+% )))
+
+% === ITALICA EN ENTORNO MATEMÁTICO === (((
+\DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
+\DeclareSymbolFontAlphabet{\mathit}{italics}
+\ExplSyntaxOn
+\int_step_inline:nnnn { `A } { 1 } { `Z }
+ {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1} }
+\int_step_inline:nnnn { `a } { 1 } { `z } {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1}}
+\ExplSyntaxOff
+% )))

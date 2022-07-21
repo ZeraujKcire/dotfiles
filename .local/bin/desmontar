@@ -1,0 +1,5 @@
+#!/bin/sh
+
+lsblk -e 7
+sudo umount -l ~/usb
+lsblk -e 7

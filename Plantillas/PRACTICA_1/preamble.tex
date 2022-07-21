@@ -1,0 +1,75 @@
+
+%=== PAQUETES === (((
+\usepackage[T1]{fontenc}
+\usepackage{<++>} % font
+\usepackage[letterspace=-50]{letterspace}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{expl3}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+% )))
+
+%=== COMANDOS === (((
+\newcommand{\dis}{\displaystyle}
+\newcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
+\newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice{\vcenter{\hbox{\huge $#1$}} }
+{\vcenter{\hbox{\Large $#1$}} }{#1}{#1}}\displaylimits}
+\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGENES/Sigma.png}} }
+
+\DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
+\DeclareSymbolFontAlphabet{\mathit}{italics}
+\ExplSyntaxOn
+\int_step_inline:nnnn { `A } { 1 } { `Z }
+ {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1} }
+\int_step_inline:nnnn { `a } { 1 } { `z } {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1}}
+\ExplSyntaxOff
+% )))
+
+% === MODIFICACIÓN DE APARIENCIA DE SECCIONES Y SUB === (((
+\titleformat*{\section}{\large\normalfont\bfseries\centering}
+\titleformat*{\subsection}{\large\itshape \centering}
+% \setcounter{secnumdepth}{0}
+\renewcommand*{\contentsname}{\large\textbf{CONTENIDOS.}}
+\usepackage[nottoc,numbib]{tocbibind}
+\renewcommand{\refname}{REFERENCIAS.}
+% )))
+
+% === PORTADA === (((
+\newcommand{\portada}{
+	\lsstyle
+  \begin{titlepage}
+  \centering
+  \begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{IMAGENES/logo_uaa.png}  
+  \end{figure}
+  {\bfseries\Large\MakeUppercase{\textit{Universidad Autónoma de Aguascalientes.}} \par}
+  \vspace{1cm}
+  {\Large Centro de Ciencias Básicas. \vspace{0.5cm}\\[2mm]
+  Departamento de Matemáticas y Física.\vspace{0.5cm}\\[2mm]
+  Licenciatura en Matemáticas Aplicadas.\vspace{0.5cm}\\[2mm]
+  8 -- A. \vspace{0.5cm}\\[2mm]
+  Práctica <++>.\par}
+  \vspace{1.5cm}
+  {\bfseries\Huge <++> \par} % title
+  \vspace{1.5cm}
+  % {\itshape\Large Óptica.\\Prof. Mariana Alfaro Gómez.\par}
+  % {\itshape\Large Variable Compleja I.   \\Prof. Fausto Arturo Contreras Rosales.\par}
+  % {\itshape\Large Métodos Numéricos II.       \\Prof. Manuel Ramírez Aranda.\par}
+  % {\itshape\Large Diseño de Experimentos.    \\Prof. Angelica Hernández Quintero.\par}
+  % {\itshape\Large Filosofía de la Investigación Científica.        \\Prof. Jesús Mariano Rodríguez Muñoz.\par}
+  \vfill
+  {\Large Autores: \par}
+  {\Large \textit{<++>}\par} % Autores.
+  % {\Large \textit{Por Erick I. Rodríguez Juárez.}\par}
+  \vfill
+  {\Large <++>, 2021. \par} % date
+  \end{titlepage} 
+	\tableofcontents
+	\newpage
+} 
+

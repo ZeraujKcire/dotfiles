@@ -1,0 +1,53 @@
+#!/bin/sh
+
+initialize(){
+    cd "$(xdg-user-dir PICTURES)"
+}
+notify(){
+    notify-send "The screenshot has been made"
+    exit 0
+}
+desk(){
+    initialize
+    scrot
+    notify
+}
+select(){
+    initialize
+    notify-send "Select an area for the screenshot"
+    sleep 0.5
+    scrot -s && end || exit 0
+}
+window(){
+    initialize
+    scrot -u
+    notify
+}
+help(){
+    cat << EOF
+Options:
+    -h| --help      Show this message
+    -d| --desk      Fullscreen screenshot
+    -w| --window    Active window only
+    -s| --select    Select an area
+EOF
+    exit 0
+}
+
+case "$1" in
+    -d | --desk)
+        desk
+        ;;
+    -s | --select)
+        select
+        ;;
+    -w | --window)
+        window
+        ;;
+    -h | --help)
+        help
+        ;;
+    *)
+        help
+        ;;
+esac

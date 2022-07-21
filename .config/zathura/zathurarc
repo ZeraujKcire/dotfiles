@@ -1,0 +1,57 @@
+
+#  ████████             ██   ██                              
+# ░░░░░░██             ░██  ░██                              
+#      ██    ██████   ██████░██      ██   ██ ██████  ██████  
+#     ██    ░░░░░░██ ░░░██░ ░██████ ░██  ░██░░██░░█ ░░░░░░██ 
+#    ██      ███████   ░██  ░██░░░██░██  ░██ ░██ ░   ███████ 
+#   ██      ██░░░░██   ░██  ░██  ░██░██  ░██ ░██    ██░░░░██ 
+#  ████████░░████████  ░░██ ░██  ░██░░██████░███   ░░████████
+# ░░░░░░░░  ░░░░░░░░    ░░  ░░   ░░  ░░░░░░ ░░░     ░░░░░░░░ 
+
+# Scroll settings.
+set scroll-step 100
+
+# Scroll mapings.
+	# Move normally
+unmap h
+map  j scroll left
+map  k scroll down
+map  l scroll up
+# map ntilde scroll right
+map { scroll right
+	#	Move pages
+unmap H
+unmap J
+unmap K
+unmap L
+map J navigate left
+map K navigate next
+map L navigate previous
+map [ navigate right
+
+# Inverse colors.
+map i recolor
+# set recolor               "true"
+# set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+# Title on bars
+set window-title-basename "true"
+set statusbar-basename "true"
+
+# Copy Text
+set selection-clipboard clipboard
+
+# Font
+set font "Victor Mono Semibold 10"
+
+# Color
+set statusbar-bg \#000000
+set statusbar-fg \#FFFFFF
+
+# Keybindings
+map <C-d> ":exec kitty 'lf $(dirname $FILE)'"
+map <C-n> feedkeys ":exec zathura $FILE<Return>"
+
+# BROWSER
+set sandbox none
