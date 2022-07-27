@@ -11,7 +11,7 @@
 autocmd FileType * call AssignExpander()
 
 if !exists('g:quicktex_excludechar')
-	let g:quicktex_excludechar = ['{', '(', '[']
+	let g:quicktex_excludechar = ['{', '(', '[', '_', '-']
 endif
 
 function! AssignExpander()

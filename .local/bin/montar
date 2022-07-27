@@ -3,3 +3,6 @@
 lsblk -e 7
 sudo mount /dev/sdb1 ~/usb
 lsblk -e 7
+echo "Montado con éxito"
+sleep 2;
+sudo lf

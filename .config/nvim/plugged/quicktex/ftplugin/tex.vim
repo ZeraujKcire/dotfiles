@@ -109,6 +109,8 @@ let g:quicktex_tex = {
 		\'lst1' : "\\begin{lstlisting}[backgroundcolor=\\color{gray!20}]\<CR><+++>\n\\end{lstlisting}",
 		\'lsti' : "\\lstinputlisting[language=<+++>]{<++>} <++>",
 		\'m' : "\\(<+++>\\) <++>",
+		\'ma' : "magin = <+++>in <++>",
+		\'mar' : "magin = <+++>in <++>",
 		\'mag' : "magenta ",
 		\'mic' : "\\micita{<+++>} <++>",
 		\'mid' : "midway, ",
