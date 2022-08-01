@@ -1,7 +1,7 @@
 # dotfiles
 My dotfiles for ubuntu in this directories.
 
-`
+```bash
 .
 ├── .config
 │   ├── Min
@@ -23,4 +23,4 @@ My dotfiles for ubuntu in this directories.
 │   └── bin
 ├── Plantillas
 └── texmf
-`
+```
