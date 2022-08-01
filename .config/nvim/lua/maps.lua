@@ -18,20 +18,12 @@ local fn = vim.fn
 local opt = vim.opt
 local api = vim.api
 local function map(mode,key,action,opts)
-	local options = {noremap = true, silent = true}
+	local options = {noremap = true, silent = false}
 	if opts then
 		options = {noremap = opts, silent = true}
 	end
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
--- local function auto(mode, files, com)
-	-- vim.api.nvim_create_autocmd({mode},
-	-- {
-		-- pattern = {files},
-		-- command = {com}
-	-- }
-	-- )
--- end
 -- )))
 
 -- === DIRECTIONS === (((
@@ -46,15 +38,15 @@ map('','Ñ','$')
 -- )))
 
 -- === GENERAL === (((
-map('v','<A-a>',":'<'>!column -t -s ''<left>")
+map("", "<M-a>",":'<'>!column -t -s ''<left>")
 map('','<Insert>','R')
 map('n','<C-w>',':set wrap!<CR>')
-map('','s',':s///g<left><left><left>',false)
+map('','s',':s///g<left><left><left>')
 map('n','S',':%s///g<left><left><left>', false)
 map('n','Q','@',false)
 map('n','<M-d>',':au!<CR>',false)
 map('n','<M-n>',':Lex<bar> vertical resize 30<CR>')
-vim.cmd([[command W w]])
+cmd([[command W w]])
 map('n','<C-q>','ZZ')
 -- )))
 
@@ -108,7 +100,7 @@ map('n','<C-k>',"V:move '>+1<CR>gv-gv")
 map('n','<C-S-L>','zM')
 map('n','<C-S-K>','zR')
 map('n','<space>','za',false)
-map('n','<A-s>','/=== ',false)
+map('n','<M-s>','/=== ',false)
 -- )))
 
 -- === COMMENT === (((
@@ -132,7 +124,7 @@ map('i','<','<> <++><Esc>6ha')
 map('n','<M-j>','<C-w>h')
 map('n','<M-k>','<C-w>j')
 map('n','<M-l>','<C-w>k')
-map('n','<M-;>','<C-w>l')
+map('n','<M-ñ>','<C-w>l')
 -- MOVE IN INSERT MODE.
 map('i','<M-j>','<Esc><C-w>h')
 map('i','<M-k>','<Esc><C-w>j')
@@ -154,21 +146,21 @@ g.sendtowindow_use_defaults = 1
 -- )))
 
 -- === LaTeX === (((
-vim.cmd([[autocmd FileType tex nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>]])
+cmd([[autocmd FileType tex nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>]])
 -- vim.api.nvim_create_autocmd("FileType",{
 -- 	pattern = "tex",
 -- 	command = "nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>",
 -- })
 -- auto("FileType" , 'tex' , "nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>")
-vim.cmd([[au BufWritePost *.tex silent ! xelatex %]])
-vim.cmd([[autocmd FileType tex nmap <M-p> :au BufWritePost *.tex silent ! pdflatex %<CR>]])
-vim.cmd([[autocmd FileType tex nmap <M-e> :au BufWritePost *.tex silent ! xelatex %<CR>]])
-vim.cmd([[autocmd FileType tex nmap <A-b> :!bibtex %:r<CR>]])
-vim.cmd([[au BufReadPre *.log set filetype=log]])
---auto("BufReadPre", '*.log', "set filetype=log")
-vim.cmd([[autocmd FileType tex nmap <C-o> :vert split<CR><M-;>:e %:r.log<CR>:/^l\.\d<CR>]])
-vim.cmd([[autocmd FileType tex nmap <C-p> :vert split<CR><M-;>:e preamble.tex<CR>]])
-vim.cmd([[autocmd FileType tex nmap <C-b> :vert split<CR><M-;>:e Referencias.bib<CR>]])
+-- vim.api.nvim_create_autocmd('BufWritePost', '*.tex', 'silent ! xelatex %')
+cmd([[au BufWritePost *.tex silent ! xelatex %]])
+cmd([[autocmd FileType tex nmap <M-p> :au BufWritePost *.tex silent ! pdflatex %<CR>]])
+cmd([[autocmd FileType tex nmap <M-e> :au BufWritePost *.tex silent ! xelatex %<CR>]])
+cmd([[autocmd FileType tex nmap <A-b> :!bibtex %:r<CR>]])
+cmd([[au BufReadPre *.log set filetype=log]])
+cmd([[autocmd FileType tex nmap <C-o> :vert split<CR><M-;>:e %:r.log<CR>:/^l\.\d<CR>]])
+cmd([[autocmd FileType tex nmap <C-p> :vert split<CR><M-;>:e preamble.tex<CR>]])
+cmd([[autocmd FileType tex nmap <C-b> :vert split<CR><M-;>:e Referencias.bib<CR>]])
 g.tex_flavor = 'latex'
 -- )))
 
@@ -178,58 +170,65 @@ g.tex_flavor = 'latex'
 -- )))
 
 -- === Rscript === (((
-vim.cmd([[au FileType r nmap <C-a> :!zathura<space>Rplots.pdf<space>&<Enter><Enter>]])
-vim.cmd([[au FileType r nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-j>]])
-vim.cmd([[au FileType r nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-l>]])
-vim.cmd([[au FileType r nmap <M-r> :au BufWritePost *.r ! Rscript % > output.txt<CR>]])
-vim.cmd([[au FileType r nmap <C-o> :vert split<CR><M-;>:e output.txt<CR>]])
-vim.cmd([[au FileType r nmap <C-p> :vert split<CR><M-;>:e functions.r<CR>]])
-vim.cmd([[au FileType r nmap <C-d> :vert split<CR><M-;>:e datos.txt<CR>]])
-vim.cmd([[au FileType r tnoremap <C-q> <Esc>iq()<CR>exit<CR>]])
-vim.cmd([[au FileType text nnoremap <C-f> ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>]])
-vim.cmd([[au FileType text nnoremap <C-b> ggVG:'<,'>'<'>!column -t -s ' '<CR>]])
+cmd([[au FileType r nmap <C-a> :!zathura<space>Rplots.pdf<space>&<Enter><Enter>]])
+cmd([[au FileType r nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-j>]])
+cmd([[au FileType r nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-l>]])
+cmd([[au FileType r nmap <M-r> :au BufWritePost *.r ! Rscript % > output.txt<CR>]])
+cmd([[au FileType r nmap <C-o> :vert split<CR><M-;>:e output.txt<CR>]])
+cmd([[au FileType r nmap <C-p> :vert split<CR><M-;>:e functions.r<CR>]])
+cmd([[au FileType r nmap <C-d> :vert split<CR><M-;>:e datos.txt<CR>]])
+cmd([[au FileType r tnoremap <C-q> <Esc>iq()<CR>exit<CR>]])
+cmd([[au FileType text nnoremap <C-f> ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>]])
+cmd([[au FileType text nnoremap <C-b> ggVG:'<,'>'<'>!column -t -s ' '<CR>]])
 -- )))
 
 -- === Python === (((
-vim.cmd([[au FileType python nmap <M-p> :au BufWritePost *.py silent !python3 % > output.txt<CR>]])
-vim.cmd([[au FileType python nmap <M-t> :vs<CR><M-;>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
-vim.cmd([[au FileType python nmap <M-c> :sp<CR><M-k>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
-vim.cmd([[au FileType python nmap <M-e> :au BufWritePost *.py !python3 % > output.txt<CR>]])
-vim.cmd([[au FileType python nmap <C-o> :split<CR><M-k>:e output.txt<CR>]])
-vim.cmd([[au FileType python nmap <C-p> :topleft vs<CR>:e functions.py<CR>]])
-vim.cmd([[au FileType python tnoremap <C-q> <Esc>iexit()<CR>exit<CR>]])
+cmd([[au FileType python nmap <M-p> :au BufWritePost *.py silent !python3 % > output.txt<CR>]])
+cmd([[au FileType python nmap <M-t> :vs<CR><M-;>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
+cmd([[au FileType python nmap <M-c> :sp<CR><M-k>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
+cmd([[au FileType python nmap <M-e> :au BufWritePost *.py !python3 % > output.txt<CR>]])
+cmd([[au FileType python nmap <C-o> :split<CR><M-k>:e output.txt<CR>]])
+cmd([[au FileType python nmap <C-p> :topleft vs<CR>:e functions.py<CR>]])
+cmd([[au FileType python tnoremap <C-q> <Esc>iexit()<CR>exit<CR>]])
 -- )))
 
 -- === CPP === (((
-vim.cmd([[au FileType c,cpp nmap <C-p> :topleft vs<CR>:e functions.h<CR>]])
-vim.cmd([[au FileType cpp nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType c nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.c -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType cpp nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType c nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.c -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType cpp nmap <M-CR> :write<CR><M-;>iclear<CR>g++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType c nmap <M-CR> :write<CR><M-;>iclear<CR>g++ -Wall *.c -o compilacion && ./compilacion<CR>]])
-vim.cmd([[au FileType c,cpp tnoremap <C-q> <Esc>iexit<CR>]])
+cmd([[au FileType c,cpp nmap <C-p> :topleft vs<CR>:e functions.h<CR>]])
+cmd([[au FileType cpp nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType c nmap <M-t> :vs<CR><M-;>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.c -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType cpp nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType c nmap <M-c> :sp<CR><M-k>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>ig++ -Wall *.c -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType cpp nmap <M-CR> :write<CR><M-;>iclear<CR>g++ -Wall *.cpp -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType c nmap <M-CR> :write<CR><M-;>iclear<CR>g++ -Wall *.c -o compilacion && ./compilacion<CR>]])
+cmd([[au FileType c,cpp tnoremap <C-q> <Esc>iexit<CR>]])
 -- )))
 
 -- === OCTAVE === (((
-vim.cmd([[au FileType matlab nmap <M-p> :au BufWritePost *.py silent !octave % > output.txt<CR>]])
-vim.cmd([[au FileType matlab nmap <C-p> :topleft vs<CR>:e functions.m<CR>]])
-vim.cmd([[au FileType matlab nmap <M-t> :vs<CR><M-;>:term<CR>Aoctave<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
-vim.cmd([[au FileType matlab nmap <M-c> :sp<CR><M-k>:term<CR>Aoctave<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
-vim.cmd([[au FileType matlab tnoremap <C-q> <Esc>iexit<CR>exit<CR>]])
+cmd([[au FileType matlab nmap <M-p> :au BufWritePost *.py silent !octave % > output.txt<CR>]])
+cmd([[au FileType matlab nmap <C-p> :topleft vs<CR>:e functions.m<CR>]])
+cmd([[au FileType matlab nmap <M-t> :vs<CR><M-;>:term<CR>Aoctave<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
+cmd([[au FileType matlab nmap <M-c> :sp<CR><M-k>:term<CR>Aoctave<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
+cmd([[au FileType matlab tnoremap <C-q> <Esc>iexit<CR>exit<CR>]])
 -- )))
 
 -- === RUBY === (((
-vim.cmd([[au FileType ruby nmap <M-e> :au BufWritePost *.rb !ruby % > output.txt<CR>]])
-vim.cmd([[au FileType ruby nmap <M-p> :au BufWritePost *.rb silent !ruby % > output.txt<CR>]])
-vim.cmd([[au FileType ruby nmap <C-p> :topleft vs<CR>:e functions.m<CR>]])
-vim.cmd([[au FileType ruby nmap <M-t> :vs<CR><M-;>:term<CR>Airb<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
-vim.cmd([[au FileType ruby nmap <M-c> :sp<CR><M-k>:term<CR>Airb<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
-vim.cmd([[au FileType matlab tnoremap <C-q> <Esc>iexit<CR>exit<CR>]])
+cmd([[au FileType ruby nmap <M-e> :au BufWritePost *.rb !ruby % > output.txt<CR>]])
+cmd([[au FileType ruby nmap <M-p> :au BufWritePost *.rb silent !ruby % > output.txt<CR>]])
+cmd([[au FileType ruby nmap <C-p> :topleft vs<CR>:e functions.m<CR>]])
+cmd([[au FileType ruby nmap <M-t> :vs<CR><M-;>:term<CR>Airb<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>]])
+cmd([[au FileType ruby nmap <M-c> :sp<CR><M-k>:term<CR>Airb<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>]])
+cmd([[au FileType matlab tnoremap <C-q> <Esc>iexit<CR>exit<CR>]])
 -- )))
 
 -- === CSV === (((
-vim.cmd([[au BufReadPre *.csv set filetype=csv]])
-vim.cmd([[au FileType csv nnoremap <C-f> ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>]])
-vim.cmd([[au FileType csv nnoremap <C-b> ggVG:'<,'>'<'>!column -t -s ' '<CR>]])
+cmd([[au BufReadPre *.csv set filetype=csv]])
+cmd([[au FileType csv nnoremap <C-f> ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>]])
+cmd([[au FileType csv nnoremap <C-b> ggVG:'<,'>'<'>!column -t -s ' '<CR>]])
+-- )))
+
+-- === COLOR PICKER === (((
+map('i', '<M-P>', '<cmd>PickColorInsert<CR>', false)
+map('n', '<M-P>', '<cmd>PickColor<CR>', false)
+map('n', '<M-C>', '<cmd>ConvertHEXandRGB<CR>', false)
+-- map('n', '<M-C>', '<cmd>ConvertHEXandHSL<CR>', false)
 -- )))

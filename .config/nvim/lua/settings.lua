@@ -46,6 +46,13 @@ func! Stl_filename()
 endfunc
 set rulerformat=%60(%p%%\ \%=[%<\ \%{Stl_filename()}\ \]\ \%m\ \%=%Y%)
 ]])
+
+vim.cmd([[hi FloatBorder guibg=NONE]])
+-- Custom write message
+-- cmd([[
+-- au BufWritePost * echo ''
+-- ]])
+
 -- o.shortmess="a"
 -- )))
 
@@ -92,6 +99,7 @@ let s:comment_map = {
     \   "eml": '>',
     \   "fstab": '#',
     \   "go": '\/\/',
+		\   "html": '<!--',
     \   "java": '\/\/',
     \   "javascript": '\/\/',
     \   "lua": '--',

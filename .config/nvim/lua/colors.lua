@@ -81,7 +81,7 @@ color("StorageClass"  ,81      ,"NONE"  ,"NONE"       ,"NONE"     ,"#7cdce7"  ,"
 color("String"        ,221     ,"NONE"  ,"NONE"       ,"NONE"     ,"#fed76e"  ,"NONE"  ,"NONE")
 color("Tag"           ,204     ,"NONE"  ,"NONE"       ,"NONE"     ,"#fd6389"  ,"NONE"  ,"NONE")
 color("Title"         ,255     ,"NONE"  ,"bold"       ,"NONE"     ,"#eeeeee"  ,"NONE"  ,"bold")
-color("Todo"          ,11      ,"NONE"  ,"NONE"           ,"NONE"     ,"#fed76e"  ,"NONE"  ,"NONE")
+color("Todo"          ,11      ,"NONE"  ,"NONE"       ,"NONE"     ,"#fed76e"  ,"NONE"  ,"NONE")
 color("Type"          ,81      ,"NONE"  ,"NONE"       ,"NONE"     ,"#7cdce7"  ,"NONE"  ,"NONE")
 color("Underlined"    ,"NONE"  ,"NONE"  ,"underline"  ,"NONE"     ,"NONE"     ,"NONE"  ,"NONE")
 -- )))
