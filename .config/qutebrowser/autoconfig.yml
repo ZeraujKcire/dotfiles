@@ -17,8 +17,143 @@ settings:
         l: scroll up
         Ñ: forward
         ñ: scroll right
+  colors.prompts.selected.bg:
+    global: '#73a5d7'
+  colors.statusbar.caret.selection.bg:
+    global: '#4c6d88'
+  colors.statusbar.caret.selection.fg:
+    global: white
+  colors.statusbar.command.bg:
+    global: black
+  colors.statusbar.command.fg:
+    global: white
+  colors.statusbar.command.private.bg:
+    global: '#4c6d88'
+  colors.statusbar.command.private.fg:
+    global: white
+  colors.statusbar.insert.bg:
+    global: '#4c6d88'
+  colors.statusbar.insert.fg:
+    global: white
+  colors.statusbar.normal.bg:
+    global: black
+  colors.statusbar.normal.fg:
+    global: white
+  colors.statusbar.passthrough.bg:
+    global: darkblue
+  colors.statusbar.passthrough.fg:
+    global: white
+  colors.statusbar.private.bg:
+    global: '#666666'
+  colors.statusbar.private.fg:
+    global: white
+  colors.statusbar.progress.bg:
+    global: white
+  colors.statusbar.url.error.fg:
+    global: orange
+  colors.statusbar.url.fg:
+    global: white
+  colors.statusbar.url.hover.fg:
+    global: aqua
+  colors.statusbar.url.success.http.fg:
+    global: white
+  colors.statusbar.url.success.https.fg:
+    global: lime
+  colors.statusbar.url.warn.fg:
+    global: yellow
+  colors.tabs.bar.bg:
+    global: black
+  colors.tabs.even.bg:
+    global: black
+  colors.tabs.even.fg:
+    global: white
+  colors.tabs.indicator.error:
+    global: '#ff0000'
+  colors.tabs.indicator.start:
+    global: '#0000aa'
+  colors.tabs.indicator.stop:
+    global: '#00aa00'
+  colors.tabs.indicator.system:
+    global: rgb
+  colors.tabs.odd.bg:
+    global: black
+  colors.tabs.odd.fg:
+    global: white
+  colors.tabs.pinned.even.bg:
+    global: darkseagreen
+  colors.tabs.pinned.even.fg:
+    global: white
+  colors.tabs.pinned.odd.bg:
+    global: seagreen
+  colors.tabs.pinned.odd.fg:
+    global: white
+  colors.tabs.pinned.selected.even.bg:
+    global: black
+  colors.tabs.pinned.selected.even.fg:
+    global: white
+  colors.tabs.pinned.selected.odd.bg:
+    global: black
+  colors.tabs.pinned.selected.odd.fg:
+    global: white
+  colors.tabs.selected.even.bg:
+    global: '#4c6d88'
+  colors.tabs.selected.even.fg:
+    global: white
+  colors.tabs.selected.odd.bg:
+    global: '#4c6d88'
+  colors.tabs.selected.odd.fg:
+    global: white
+  colors.webpage.bg:
+    global: white
   completion.scrollbar.padding:
     global: 2
+  completion.scrollbar.width:
+    global: 12
+  editor.command:
+    global:
+    - nvim
+    - -f
+    - '{file}'
+    - -c
+    - normal {line}G{column0}l
+  fonts.completion.category:
+    global: bold 10pt "Victor Mono SemiBold"
+  fonts.completion.entry:
+    global: 10pt "Victor Mono SemiBold"
+  fonts.contextmenu:
+    global: '"Victor Mono SemiBold"'
+  fonts.debug_console:
+    global: 10pt "Victor Mono SemiBold"
+  fonts.default_family:
+    global: '"Victor Mono SemiBold"'
+  fonts.default_size:
+    global: 11pt
+  fonts.downloads:
+    global: default_size "Victor Mono SemiBold"
+  fonts.hints:
+    global: default_size "Victor Mono SemiBold"
+  fonts.keyhint:
+    global: default_size "Victor Mono SemiBold"
+  fonts.messages.error:
+    global: default_size "Victor Mono SemiBold"
+  fonts.messages.info:
+    global: default_size "Victor Mono SemiBold"
+  fonts.messages.warning:
+    global: default_size "Victor Mono SemiBold"
+  fonts.prompts:
+    global: default_size "Victor Mono SemiBold"
+  fonts.statusbar:
+    global: 10pt "Victor Mono SemiBold"
+  fonts.tabs:
+    global: default_size default_family
+  fonts.web.family.cursive:
+    global: '"Victor Mono SemiBold Italic"'
+  tabs.favicons.scale:
+    global: 1.0
+  tabs.favicons.show:
+    global: never
+  tabs.focus_stack_size:
+    global: 10
   url.default_page:
     global: https://google.com
   url.incdec_segments:
