@@ -119,6 +119,7 @@ let s:comment_map = {
     \   "text": '#',
 		\   "toml": '#',
     \   "vim": '"',
+		\   "yaml": '#',
     \ }
 
 " FUNCIÓN

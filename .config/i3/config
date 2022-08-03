@@ -34,8 +34,8 @@ bindsym $mod+Shift+o exec poweroff
 # start program launcher
 bindsym $mod+n exec kitty 'lfub'
 bindsym $mod+m exec "kitty cmus";exec "kitty cava";focus left
-bindsym $mod+g exec "kitty links www.google.com"
-bindsym $mod+Shift+g exec "kitty links https://libgen.rs"
+bindsym $mod+g exec qutebrowser
+bindsym $mod+Shift+g exec "kitty links www.google.com"
 bindsym $mod+p exec "kitty htop"
 
 # bindsym $mod+b exec min
