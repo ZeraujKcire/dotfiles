@@ -39,20 +39,17 @@ wo.foldmethod     = 'marker'
 wo.foldmarker     = '(((,)))'
 o.hlsearch        = false
 o.inccommand      = 'nosplit'
-
 vim.cmd([[
 func! Stl_filename()
 	return expand('%:t:r')
 endfunc
 set rulerformat=%60(%p%%\ \%=[%<\ \%{Stl_filename()}\ \]\ \%m\ \%=%Y%)
 ]])
-
 vim.cmd([[hi FloatBorder guibg=NONE]])
 -- Custom write message
 -- cmd([[
 -- au BufWritePost * echo ''
 -- ]])
-
 -- o.shortmess="a"
 -- )))
 
@@ -68,7 +65,7 @@ endfunction
 ]])
 -- )))
 
--- === TABS === (((
+-- === TABULATIONS === (((
 bo.shiftwidth  = 2
 bo.tabstop     = 2
 bo.autoindent  = false
@@ -77,6 +74,8 @@ bo.smartindent = false
 bo.indentexpr  = ''
 bo.fo          = 'jql'
 vim.api.nvim_command('filetype indent off')
+o.splitright = true
+o.splitbelow = true
 -- )))
 
 -- === AUX FILES === (((

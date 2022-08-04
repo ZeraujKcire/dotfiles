@@ -1,4 +1,6 @@
 
+# TODO: about:blank at start, change colors of bookmarks and url when loading
+
 # === INITIAL CONFIG === (((
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -123,7 +125,7 @@ c.tabs.focus_stack_size = 10
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
 # Type: FuzzyUrl
-c.url.default_page = 'https://google.com'
+c.url.default_page = 'about:blank'
 
 # URL segments where `:navigate increment/decrement` will search for a
 # number.
@@ -149,7 +151,7 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/?q={}&pccc=1'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'www.google.com'
+# c.url.start_pages = 'www.google.com'
 # )))
 
 # === COLORS === (((
@@ -168,7 +170,7 @@ base07 = "#f8f8f8"
 base08 = "#ab4642"
 base09 = "#dc9656"
 base0A = "#f7ca88"
-base0B = "#a1b56c"
+base0B = "#b1c077"
 base0C = "#86c1b9"
 base0D = "#7cafc2"
 base0E = "#ba8baf"
@@ -178,7 +180,7 @@ base0F = "#a16946"
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
-c.colors.completion.fg = base05
+c.colors.completion.fg = base07
 
 # Background color of the completion widget for odd rows.
 c.colors.completion.odd.bg = base01
@@ -403,40 +405,40 @@ c.colors.tabs.indicator.stop = base0C
 c.colors.tabs.indicator.error = base08
 
 # Foreground color of unselected odd tabs.
-c.colors.tabs.odd.fg = base05
+c.colors.tabs.odd.fg = base07
 
 # Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = base01
+c.colors.tabs.odd.bg = base00
 
 # Foreground color of unselected even tabs.
-c.colors.tabs.even.fg = base05
+c.colors.tabs.even.fg = base07
 
 # Background color of unselected even tabs.
-c.colors.tabs.even.bg = base00
+c.colors.tabs.even.bg = base02
 
 # Background color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.bg = base0C
+c.colors.tabs.pinned.even.bg = base02
 
 # Foreground color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.fg = base07
+c.colors.tabs.pinned.even.fg = base06
 
 # Background color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.bg = base0B
+c.colors.tabs.pinned.odd.bg = base07
 
 # Foreground color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.fg = base07
+c.colors.tabs.pinned.odd.fg = base06
 
 # Background color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.bg = base02
+c.colors.tabs.pinned.selected.even.bg = base0E
 
 # Foreground color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.fg = base05
+c.colors.tabs.pinned.selected.even.fg = base00
 
 # Background color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.bg = base02
+c.colors.tabs.pinned.selected.odd.bg = base0E
 
 # Foreground color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.fg = base05
+c.colors.tabs.pinned.selected.odd.fg = base00
 
 # Foreground color of selected odd tabs.
 c.colors.tabs.selected.odd.fg = base07
@@ -537,6 +539,7 @@ config.bind('k', 'scroll down')
 config.bind('l', 'scroll up')
 config.bind('Ñ', 'forward')
 config.bind('ñ', 'scroll right')
+config.bind('s', 'config-source')
 # config.bind('M', 'hint links spawn nohup mpv --cache=yes --demuxer-max-bytes=300M --demuxer-max-back-bytes=100M {hint-url}')
 # config.bind('P', 'hint links spawn kitty youtube-dl {hint-url}')
 # )))

@@ -5,7 +5,7 @@ let g:quicktex_lua = {
 	\'c' : "cmd.",
 	\'w' : "wo.",
 	\'f' : "= false",
-	\'fu' : "function()\n<+++>\nend",
+	\'fu' : "function() <+++> end",
 	\'fun' : "function <+++>()\n<++>\nend",
 	\'lo' : "local ",
 	\'gl' : "global ",
