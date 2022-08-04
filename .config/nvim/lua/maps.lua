@@ -24,6 +24,15 @@ local function map(mode,key,action,opts)
 	end
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
+local function sim_au(mode, group, pattern, command)
+	api.nvim_create_autocmd(mode,
+	{
+		group = api.nvim_create_augroup(group, {clear = true}),
+		pattern = pattern,
+		command = command
+	}
+)
+end
 -- )))
 
 -- === DIRECTIONS === (((
@@ -86,11 +95,11 @@ map('','M',',')
 map('n','<C-e>','ggyG',false)
 map('v','<C-l>',":move '<-2<CR>gv-gv")
 map('v','<C-k>',":move '>+1<CR>gv-gv")
-map('v',';','>gv')
+map('v','<C-ñ>','>gv')
 map('v','<C-j>','<gv')
 map('','<','<Nop>',false)
 map('','>','<Nop>',false)
-map('n',';','V>gv')
+map('n','<C-ñ>','V>gv')
 map('n','<C-j>','V<gv,')
 map('n','<C-l>',"V:move '<-2<CR>gv-gv")
 map('n','<C-k>',"V:move '>+1<CR>gv-gv")
@@ -148,8 +157,8 @@ g.sendtowindow_use_defaults = 1
 -- === LaTeX === (((
 cmd([[autocmd FileType tex nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>]])
 -- vim.api.nvim_create_autocmd("FileType",{
--- 	pattern = "tex",
--- 	command = "nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>",
+	-- pattern = "*.tex",
+	-- command = "nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>",
 -- })
 -- auto("FileType" , 'tex' , "nmap <C-a> :!zathura<space>%:r.pdf<space>&<Enter><Enter>")
 -- vim.api.nvim_create_autocmd('BufWritePost', '*.tex', 'silent ! xelatex %')

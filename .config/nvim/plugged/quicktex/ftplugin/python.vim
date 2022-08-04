@@ -25,4 +25,6 @@ let g:quicktex_python = {
 			\'pa' : "pass ",
 			\'pr' : "print(<+++>) <++>",
 			\'pri' : "print('<+++>', end = \" \") <++>",
+			\'T' : "True",
+			\'t' : "True",
       \}
