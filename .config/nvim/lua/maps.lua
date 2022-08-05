@@ -9,9 +9,11 @@
 -- ░░   ░░  ░░░░░░  ░░      ░░░░░░  
 
 -- === VARIABLES === (((
+-- aliases
 local cmd = vim.cmd
 local g = vim.g
 local api = vim.api
+-- single mappings
 local function map(mode,key,action,opts)
 	local options = {noremap = true, silent = false}
 	if opts then
@@ -19,6 +21,7 @@ local function map(mode,key,action,opts)
 	end
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
+-- function to autocommand for a mapping
 local function au_m(event, group, pattern, mapping)
 	api.nvim_create_autocmd(event,{
 		group = group,
@@ -26,6 +29,7 @@ local function au_m(event, group, pattern, mapping)
 		callback = mapping,
 	})
 end
+-- function to autocommand for a script
 local function au_c(event, group, pattern, command)
 	api.nvim_create_autocmd(event,{
 		group = group,
@@ -150,7 +154,7 @@ map('n','<M-S-ñ>',':vertical resize +5<CR>')
 map('n','<M-K>',':resize -3<CR>')
 map('n','<M-L>',':resize +3<CR>')
 -- Dividir la ventana verticalmente.
-map('','<C-s>', ':vert split<CR>',false)
+map('','<C-s>', ':vs<CR>',false)
 g.sendtowindow_use_defaults = 1
 -- )))
 
@@ -188,6 +192,7 @@ au_m("FileType", Rg, "text", function() map('n', '<C-b>', "ggVG:'<,'>'<'>!column
 -- )))
 
 -- === Python === (((
+local Py = api.nvim_create_augroup("Pythongroup", {clear = true})
 au_m("FileType", Py, "python", function() map('n', '<M-p>', ':au BufWritePost *.py silent !python3 % > output.txt<CR>',false) end)
 au_m("FileType", Py, "python", function() map('n', '<M-t>', ':vs<CR>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>',false) end)
 au_m("FileType", Py, "python", function() map('n', '<M-c>', ':sp<CR>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>',false) end)

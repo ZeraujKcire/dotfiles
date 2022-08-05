@@ -151,7 +151,7 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/?q={}&pccc=1'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-# c.url.start_pages = 'www.google.com'
+c.url.start_pages = 'www.google.com'
 # )))
 
 # === COLORS === (((
@@ -455,6 +455,7 @@ c.colors.tabs.selected.even.bg = base05
 # Background color for webpages if unset (or empty to use the theme's
 # color).
 c.colors.webpage.bg = base00
+# c.colors.webpage.darkmode.enabled = True
 # )))
 
 # === FONTS === (((
