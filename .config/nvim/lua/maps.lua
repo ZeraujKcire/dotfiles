@@ -117,7 +117,7 @@ map('n','<M-s>','/=== ',false)
 -- )))
 
 -- === COMMENT === (((
-map('v','<C-c>',":call ToggleComment()<CR>")
+map('v','<C-c>',":call ToggleComment()<CR><CR>")
 map('n','<C-c>',':call ToggleComment()<CR>')
 map('i','<C-c>','<ESC>:call ToggleComment()<CR>A')
 -- )))
@@ -166,9 +166,9 @@ au_m("FileType", TeX, "tex", function() map('n', '<M-p>', ':au BufWritePost *.te
 au_m("FileType", TeX, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
-au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>:/^l\\.\\d<CR>', false) end)
-au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR>' , false) end)
-au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR><CR>' , false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
 g.tex_flavor = 'latex'
 -- )))
 

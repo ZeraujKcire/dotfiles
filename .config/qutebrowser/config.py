@@ -151,7 +151,7 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/?q={}&pccc=1'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'www.google.com'
+c.url.start_pages = 'about:blank'
 # )))
 
 # === COLORS === (((
@@ -540,15 +540,17 @@ config.bind('k', 'scroll down')
 config.bind('l', 'scroll up')
 config.bind('Ñ', 'forward')
 config.bind('ñ', 'scroll right')
-config.bind('s', 'config-source')
+config.bind('<Ctrl-s>', 'config-source')
+config.bind('<Ctrl-d>', 'download-clear')
+config.bind('<Ctrl-p>', 'print --pdf output.pdf')
 # config.bind('M', 'hint links spawn nohup mpv --cache=yes --demuxer-max-bytes=300M --demuxer-max-back-bytes=100M {hint-url}')
 # config.bind('P', 'hint links spawn kitty youtube-dl {hint-url}')
 # )))
 
 # Choose file from lf file manager
 # config.set("fileselect.handler", "external")
-# config.set("fileselect.single_file.command", ["kitty", "--class", "lf", "-selection-path /dev/stdout", '{}'])
-# config.set("fileselect.multiple_files.command", ["kitty", "--class", "lf", "-selection-path /dev/stdout", '{}'])
+# config.set("fileselect.single_file.command", ["kitty", "--class", "lf", "-selection-path", '{}'])
+# config.set("fileselect.multiple_files.command", ["kitty", "--class", "lf", "-selection-path", '{}'])
 
 # COLORSCHEME
 # config.set("colors.webpage.darkmode.enabled", True)

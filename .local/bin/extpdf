@@ -1,0 +1,7 @@
+#!/bin/sh
+
+PDF=$1
+pags=$2
+outpdf=$3
+
+pdftk $PDF cat $pags output $outpdf

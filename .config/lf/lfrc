@@ -1,4 +1,4 @@
-# vim:foldmethod=marker:foldmarker={{,}}
+# vim:foldmarker={{,}}
 
 #  ██       ████████
 # ░██      ░██░░░░░ 
@@ -9,14 +9,15 @@
 # ░████████░██      
 # ░░░░░░░░ ░░       
 
+# {{set preview
 # interpreter for shell commands
 set shell sh
 # set preview
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
-# set nopreview
-# set scrolloff=18
+# }}
 
+# {{ shellopts
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
@@ -25,36 +26,35 @@ set previewer '~/.config/lf/scope'
 # is used selectively within individual commands as it can be limiting at
 # times.
 set shellopts '-eu'
+# }}
 
+# {{ ifs
 # set internal field separator (IFS) to "\n" for shell commands
 # This is useful to automatically split file names in $fs and $fx properly
 # since default file separator used in these variables (i.e. 'filesep' option)
 # is newline. You need to consider the values of these options and create your
 # commands accordingly.
 set ifs "\n"
+# }}
 
-# leave some space at the top and the bottom of the screen
+# {{ leave some space at the top and the bottom of the screen
 set scrolloff 18
+# }}
 
-# NUMBER OF SPACES IN TABS
-
-# use enter for shell commands
+# {{ use enter for shell commands
 map <enter> shell
+#}}
 
-# execute current file (must be executable)
+# {{ execute current file (must be executable)
 map x $$f
 map X !$f
+# }}
 
-# dedicated keys for file opener actions
+#{{ mimeopen
 map o &mimeopen $f
 map O $mimeopen --ask $f
+#}}
 
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-
-# cmd open &xdg-open $f
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
@@ -63,30 +63,16 @@ cmd open ${{
     esac
 }}
 
-# define a custom 'rename' command without prompt for overwrite
+# {{ define a custom 'rename' command without prompt for overwrite
 cmd rename %[ -e $1 ] && printf "FILE EXISTS" || mv $f $1
-
-# make sure trash folder exists
-# %mkdir -p ~/.trash
-
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-# cmd trash %set -f; mv $fx ~/.trash
-
-# cmd removedir %trash-put $fx
-# cmd removedir ${{
-     # for file in "$fx"
-     # do
-       # trash-put "$file"
-     # don
-   # donee
 # }}
 
+# {{ trash
 cmd trash %set -f;trash $fx
+# }}
 
-cmd gototrash %set hidden!;set -f;cd ~/.local/share/Trash/files/
+# cmd gototrash %set hidden!;set -f;cd ~/.local/share/Trash/files/
 
-# define a custom 'delete' command
 cmd delete ${{
     set -f
     printf "$fx\n"
@@ -94,14 +80,7 @@ cmd delete ${{
     read ans
     [ $ans = "y" ] && rm -rf $fx
 }}
-# cmd delete %set -f;rm -rf $fx
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
-
-# extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
     set -f
     case $f in
@@ -114,7 +93,6 @@ cmd extract ${{
     esac
 }}
 
-# compress current file or selected files with tar and gunzip
 cmd compress_tar ${{
     set -f
     mkdir $1
@@ -123,7 +101,6 @@ cmd compress_tar ${{
     rm -rf $1
 }}
 
-# compress current file or selected files with zip
 cmd compress_zip ${{
     set -f
     mkdir $1
@@ -150,15 +127,9 @@ cmd mkfile ${{
     $EDITOR $name
 }}
 
-cmd chmod ${{
-		printf "Mode of Bits: "
-		read ans
-		for file in "$fx"
-		do
-			chmod $ans $file
-		done
-		lf -remote 'send reload'
-}} 
+# {{ cmd chmod
+cmd chmod %chmod +x "$f"
+# }}
 
 #{{ cmd terminal_window $
 cmd terminal_window &kitty 'lf' && cd $f
@@ -172,8 +143,11 @@ cmd terminal_window &kitty 'lf' && cd $f
   # cd $directory
 # }}
 
-cmd mount_usb $sudo mount /dev/sdb1 ~/usb
-# cmd umount_usb $sudo umount -l ~/usb
+# === drag_files === {{
+cmd dragon %dragon -a -x $fx
+cmd dragon-stay %dragon -a $fx
+cmd dragon-individual %dragon -x $fx
+# # }}
 
 # Markdown {{
 cmd create_md %cp ~/Plantillas/MARKDOWN/markdown.md .
@@ -232,6 +206,9 @@ map R
 map <c-r>
 map <c-d>
 map <a-r>
+map dr
+map ds
+map di
 #}}
 
 #{{ KEYBINDINGS.
@@ -241,7 +218,7 @@ map . set hidden!
 map c cut
 map dd trash
 map e extract
-map gt gototrash
+# map gt gototrash
 map j updir
 # map H umount_usb
 map h mount_usb
@@ -273,4 +250,7 @@ map W terminal_window
 map x chmod
 map <a-t> clear_tex
 map <c-d> reload
+map dr dragon
+map ds dragon-stay
+map di dragon-individual
 #}}
