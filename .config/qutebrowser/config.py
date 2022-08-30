@@ -147,7 +147,7 @@ c.url.incdec_segments = ['path', 'query']
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://google.com/?q={}&pccc=1'}
+c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl

@@ -209,6 +209,7 @@ map <a-r>
 map dr
 map ds
 map di
+map <c-c>
 #}}
 
 #{{ KEYBINDINGS.
@@ -241,7 +242,7 @@ map mli license
 map r $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/.*\./\./g')'<home><right><right><right><right><right><right><right><right>"
 map <c-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/\..*/\./g')'<left>"
 map R $lf -remote "send $id push :rename<space>''<left>"
-map <a-r> $lf -remote "send $id push :rename<space>'$(basename $f)'<left><left><left><left><left>"
+map <a-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/ /_/g')'"
 map ñ open
 map J cd ~
 map K bottom
@@ -253,4 +254,5 @@ map <c-d> reload
 map dr dragon
 map ds dragon-stay
 map di dragon-individual
+map <c-c> clear
 #}}

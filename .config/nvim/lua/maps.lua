@@ -84,7 +84,7 @@ map('v','<right>','<nop>')
 -- )))
 
 -- === SPELL CHECK === (((
-map('n','<M-w>',':setlocal spell! spelllang=es<CR>')
+map('n','<M-w>',':setlocal spell! spelllang=en<CR><CR>')
 map('n','<C-S-ñ>',']s')
 map('n','<C-S-j>','[s')
 map('n','<M-c>','z=')
@@ -166,8 +166,8 @@ au_m("FileType", TeX, "tex", function() map('n', '<M-p>', ':au BufWritePost *.te
 au_m("FileType", TeX, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
-au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
-au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR><CR>' , false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR>' , false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
 g.tex_flavor = 'latex'
 -- )))

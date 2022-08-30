@@ -17,8 +17,13 @@ unmap h
 map  j scroll left
 map  k scroll down
 map  l scroll up
-# map ntilde scroll right
+# map ñ scroll right
 map { scroll right
+# INDEX MODE
+map [index] k navigate_index down
+map [index] l navigate_index up
+map [index] { navigate_index expand
+# map ñ scroll right
 	#	Move pages
 unmap H
 unmap J

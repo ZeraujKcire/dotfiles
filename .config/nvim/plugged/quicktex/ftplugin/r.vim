@@ -38,6 +38,8 @@ let g:quicktex_r = {
 			\'lev' : "leveneTest(<+++> ~ <++> , data = <++>)",
 			\'lm' : "lm(<+++> ~ <++>,data = <++>)",
 			\'lsd' : "LSD.test(<+++> , \"<++>\" , alpha = <++> , console = TRUE)",
+			\'n' : "NULL ",
+			\'N' : "NULL ",
 			\'pn' : "png(\"IMAGENES/<+++>.png\")",
       \'pred' : "predict(<+++>,newdata = data.frame(<++> = <++>), interval = \"<++>\",level = 0.<++>)",
 			\'pol' : "poly(<+++>, <++>, raw = TRUE)",
