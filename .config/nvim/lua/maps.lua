@@ -180,9 +180,9 @@ g.tex_flavor = 'latex'
 -- === Rscript === (((
 local Rg = api.nvim_create_augroup("Rgroup", {clear = true})
 au_m("FileType", Rg, "r", function() map('n', '<C-a>', ':!zathura<space>Rplots.pdf<space>&<Enter><Enter>',false) end)
-au_m("FileType", Rg, "r", function() map('n', '<M-t>', ':vs<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-j>',false) end)
-au_m("FileType", Rg, "r", function() map('n', '<M-c>', ':sp<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR><Esc><M-l>',false) end)
-au_m("FileType", Rg, "r", function() map('n', '<M-r>', ':au BufWritePost *.r ! Rscript % > output.txt<CR>',false) end)
+au_m("FileType", Rg, "r", function() map('n', '<M-t>', ':vs<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR>',false) end)
+au_m("FileType", Rg, "r", function() map('n', '<M-c>', ':sp<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR>',false) end)
+au_m("FileType", Rg, "r", function() map('n', '<M-r>', ':au BufWritePost *.r ! Rscript % > output.txt<CR><CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-o>', ':vs output.txt<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-p>', ':vs functions.r<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-d>', ':vs datos.txt<CR>',false) end)
