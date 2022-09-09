@@ -430,7 +430,7 @@ let g:quicktex_math = {
 		\'sta' : "\\stackrel{<+++>}{<++>} <++>",
 		\'sta1' : "\\stackrel{(\\ref{eq:<+++>})}{<++>} <++>",
 		\'sub' : "\\subseteq ",
-		\'sug' : "\unlhd ",
+		\'sug' : "\\unlhd ",
 		\'sum' : "\\dis\\sum_{<+++>}^{<++>} <++>",
 		\'suma' : "\\dis\\suma_{<+++>}^{<++>} <++>",
 		\'sup' : "\\sup ",

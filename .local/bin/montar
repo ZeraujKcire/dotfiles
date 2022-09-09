@@ -1,8 +1,7 @@
 #!/bin/sh
 
 lsblk -e 7
-sudo mount /dev/sdb1 ~/usb
+sudo mount /dev/sdb1 ~/usb && echo "\n\nMontado con éxito\n\n"
 lsblk -e 7
-echo "Montado con éxito"
 sleep 2;
 sudo lf

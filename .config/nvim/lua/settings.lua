@@ -9,7 +9,7 @@
 --   ░░░░░░░░   ░░░░░░ ░░░   ░░  ░░░░░░ ░░░     ░░░░░░░░ ░░░ 
 
 -- === VARIABLES === (((
-local o   = vim.o
+local o   = vim.o -- global 
 local cmd = vim.cmd
 local g   = vim.g
 local wo  = vim.wo
@@ -46,11 +46,12 @@ endfunc
 set rulerformat=%60(%p%%\ \%=[%<\ \%{Stl_filename()}\ \]\ \%m\ \%=%Y%)
 ]])
 vim.cmd([[hi FloatBorder guibg=NONE]])
+o.shortmess = 'a'
+o.cmdheight = 2
 -- Custom write message
 -- cmd([[
 -- au BufWritePost * echo ''
 -- ]])
--- o.shortmess="a"
 -- )))
 
 -- === CURSOR EN EL CENTRO === (((

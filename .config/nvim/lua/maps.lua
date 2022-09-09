@@ -118,7 +118,7 @@ map('n','<M-s>','/=== ',false)
 
 -- === COMMENT === (((
 map('v','<C-c>',":call ToggleComment()<CR><CR>")
-map('n','<C-c>',':call ToggleComment()<CR>')
+map('n','<C-c>',':call ToggleComment()<CR><CR>')
 map('i','<C-c>','<ESC>:call ToggleComment()<CR>A')
 -- )))
 
