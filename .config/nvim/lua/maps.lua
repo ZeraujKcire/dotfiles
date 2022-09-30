@@ -117,8 +117,8 @@ map('n','<M-s>','/=== ',false)
 -- )))
 
 -- === COMMENT === (((
-map('v','<C-c>',":call ToggleComment()<CR><CR>")
-map('n','<C-c>',':call ToggleComment()<CR><CR>')
+map('v','<C-c>',":call ToggleComment()<CR>")
+map('n','<C-c>',':call ToggleComment()<CR>')
 map('i','<C-c>','<ESC>:call ToggleComment()<CR>A')
 -- )))
 
@@ -160,10 +160,11 @@ g.sendtowindow_use_defaults = 1
 
 -- === LaTeX === (((
 local TeX = api.nvim_create_augroup("TeXgroup", {clear = true})
-au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter><Enter>', false) end)
+local TeX1 = api.nvim_create_augroup("TeXgroup1", {clear = true})
+au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter>', false) end)
 au_c("BufWritePost", TeX, "*.tex" , "silent ! xelatex %")
-au_m("FileType", TeX, "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
-au_m("FileType", TeX, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
+au_m("FileType", TeX1, "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
+au_m("FileType", TeX1, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
 au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR>', false) end)
@@ -236,6 +237,11 @@ au_c('BufReadPre', CSVg, "*.csv", "set filetype=csv")
 au_m("FileType", CSVg, "csv",  function() map('n', '<C-f>', "ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>", false) end)
 au_m("FileType", CSVg, "csv",  function() map('n', '<C-b>', "ggVG:'<,'>'<'>!column -t -s ' '<CR>", false) end)
 -- )))
+
+-- === INFO === (((
+local INFO = api.nvim_create_augroup("Infogroup", {clear = true})
+au_c('BufReadPre', INFO, '*.info', "set filetype=info")
+-- -- )))
 
 -- === COLOR PICKER === (((
 map('i', '<M-P>', '<cmd>PickColorInsert<CR>', false)
