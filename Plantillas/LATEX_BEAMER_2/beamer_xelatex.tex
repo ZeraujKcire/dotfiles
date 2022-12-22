@@ -1,0 +1,23 @@
+\documentclass{beamer}
+\input{preamble.tex}
+\begin{document}
+\addfontfeature{LetterSpace=-5}
+
+% === PORTADA === (((
+\portada
+\begin{frame}[plain]
+	\frametitle{\centerline{Contenidos.}}
+	\setbeamercolor{structure}{fg=black}
+	\tableofcontents
+\end{frame}
+% )))
+
+\section{<++>} % (((
+\frame{\sectionpage}
+\begin{frame}[t]
+	\frametitle{\currentname}
+	<++>
+\end{frame}
+% )))
+
+\end{document}

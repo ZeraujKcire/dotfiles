@@ -1,0 +1,6 @@
+#!/bin/sh
+
+INPUT="$1";
+OUTPUT="$2";
+
+gs -sDEVICE=pdfwrite -q -dBATCH -dNOPAUSE -sOutputFile=$OUTPUT -dPDFSETTINIGS=/prepress index.info -f $INPUT && echo "\n\nDone." || echo "\n\nError: Couldn't complete the exectuion on index.info"

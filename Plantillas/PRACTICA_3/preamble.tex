@@ -1,0 +1,79 @@
+
+% === PAQUETES === (((
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{expl3}
+\usepackage{fontspec}
+\usepackage[
+  height=9in,      % height of the text block
+  width=7in,       % width of the text block
+  top=78pt,        % distance of the text block from the top of the page
+  headheight=48pt, % height for the header block
+  headsep=12pt,    % distance from the header block to the text block
+  heightrounded,   % ensure an integer number of lines
+  % showframe,       % show the main blocks
+  % verbose,         % show the values of the parameters in the log file
+]{geometry}
+\usepackage{graphicx}
+\usepackage{titlesec} 
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage[shortlabels]{enumitem}
+% \usepackage{bookmark}
+% )))
+
+% === TIPOGRAFÍA === (((
+\setmainfont[
+  BoldFont       = bodonibi,
+	ItalicFont     = Century modern italic2.ttf,
+	BoldItalicFont = bodonibi,
+	SmallCapsFont  = lmromancaps10-regular.otf
+]{Century_modern.ttf}
+% )))
+
+% === COMANDOS === (((
+\newcommand{\dis}{\displaystyle}
+\newcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
+\newcommand{\micita}[1]{\((\)\cite{#1}\()\)}
+\newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice{ \vcenter{\hbox{\huge $#1$}} }
+{\vcenter{ \hbox{\Large $#1$}} }{#1}{#1}}\displaylimits}
+\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGENES/PORTADA/Sigma.png}} }
+\DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
+\DeclareSymbolFontAlphabet{\mathit}{italics}
+\ExplSyntaxOn
+\int_step_inline:nnnn { `A } { 1 } { `Z }
+ {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1} }
+\int_step_inline:nnnn { `a } { 1 } { `z } {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1}}
+\ExplSyntaxOff
+% )))
+
+% === SECCIONES === (((
+\newcommand{\fakesc}[1]{\uppercase{{\large #1}}}
+\newcommand{\othersc}[1]{\uppercase{{\scriptsize  #1}}}
+\titleformat*{\section}{\LARGE\normalfont}
+\titleformat*{\subsection}{\large\itshape \centering}
+% \setcounter{secnumdepth}{0}
+\renewcommand*{\contentsname}{\large\textbf{CONTENIDOS.}\centering}
+\usepackage[nottoc,numbib]{tocbibind}
+\renewcommand{\refname}{R\fakesc{EFERENCIAS}.}
+% \renewcommand{\cftsecfont}{\Large}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\figurename}{Figura}
+% )))
+
+% === PORTADA === (((
+% \usepackage{fancyhdr}
+\author{Por Erick I. Rodríguez Juárez.}
+\date{\today}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\addfontfeature{LetterSpace=-5}U\othersc{NIVERSIDAD} A\othersc{UTÓNOMA} \othersc{DE} A\othersc{GUASCALIENTES} \\Departamento de Estadística. Control Estadístico de Calidad. \\ MIP. María Alejandra Márquez Reyes. }
+\fancyhead[R]{\addfontfeature{LetterSpace=-5}L\othersc{a} C\othersc{arta} C\othersc{usum} -- \thedate \\ \theauthor}
+\fancyfoot[C]{\thepage}
+% \fancyfoot[R]{\textit{Left footer}}
+\renewcommand{\headrulewidth}{1pt}
+% \chead[\thesection]{La Carta CUSUM.}
+% )))

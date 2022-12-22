@@ -1,0 +1,427 @@
+ 
+% === DATOS === (((
+\title{\textsc{<++>}}
+\author{Por Erick I. Rodríguez Juárez.}
+\institute{UAA. LMA.}
+\date{\today}
+% for backgrounds with no space.
+% \author{\colorbox{titlecolor!20}{Por Erick I. Rodríguez Juárez.}}
+% \institute{\colorbox{titlecolor!20}{UAA. LMA.}}
+% \date{\colorbox{titlecolor!20}{\today}}
+% )))
+
+% === PAQUETES === (((
+% \usetheme{Warsaw}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{expl3}
+% \usepackage{mathrsfs}
+\usepackage{graphicx}
+% )))
+
+% === TIPOGRAFÍA === (((
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usepackage{fontspec}
+\setmainfont[
+  BoldFont       = bodonibi,
+	ItalicFont     = Century modern italic2.ttf,
+	BoldItalicFont = bodonibi,
+	SmallCapsFont  = lmromancaps10-regular.otf
+]{Century_modern.ttf}
+% \usepackage{expl3}
+\DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
+\DeclareSymbolFontAlphabet{\mathit}{italics}
+\ExplSyntaxOn
+\int_step_inline:nnnn { `A } { 1 } { `Z }
+ {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1} }
+\int_step_inline:nnnn { `a } { 1 } { `z } {  \exp_args:Nf \DeclareMathSymbol{\char_generate:nn{#1}{11}}{\mathalpha}{italics}{#1}}
+\ExplSyntaxOff
+% )))
+
+% === COMANDOS === (((
+\newcommand{\dis}{\displaystyle}
+\renewcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
+\newcommand\Myref[1]{
+  \begingroup
+  \usebeamerfont*{item projected}%
+  \usebeamercolor[bg]{item projected}%
+  \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+    \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.2ex}
+    \pgfusepath{fill}
+    \pgftext[base]{\color{fg}\ref{#1}}
+  \end{pgfpicture}%
+  \endgroup
+}
+\newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice
+{\vcenter{\hbox{\huge $#1$}}}
+{\vcenter{\hbox{\Large $#1$}}}{#1}{#1}}\displaylimits}
+\newcommand{\suma}{\operator{\includegraphics[scale=0.09]{IMAGENES/PORTADA/Sigma.png}}}
+\setlength{\parindent}{0mm}
+% )))
+
+% === SECTIONS === (((
+\usepackage{nameref}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\makeatother
+% )))
+
+% === BEAMER TEMPLATE === (((
+% DESPLIEGUE EN VARIAS DIAPOSITIVAS.
+% display un item a la vez
+% \beamerdefaultoverlayspecification{<+->}
+% TITULOS EN SMALL CAPS
+\setbeamerfont{frametitle}{family=\scshape\LARGE}
+\setbeamerfont{section in head/foot}{size = \scriptsize, family=\scshape}
+
+% sin footline
+\setbeamertemplate{footline}{}
+
+% enumerates sin shade
+\setbeamertemplate{enumerate items}[circle] % esto lo estoy usando para los simbolos de enumeración.
+\setbeamertemplate{itemize items}[circle] % esto lo estoy usando para los simbolos de itemize.
+\setbeamertemplate{section in toc}[circle] % esto lo estoy usando para los simbolos de enumeración.
+
+% quitar espacio
+% \addtobeamertemplate{titleframe}{}{\vspace{-5mm}}
+% \addtobeamertemplate{block begin}{\vskip - \bigskipamount}{}
+% \addtobeamertemplate{block end}{}{\vskip - \smallskipamount}
+% \addtobeamertemplate{block example begin}{\vskip - \bigskipamount}{}
+% \addtobeamertemplate{block example end}{}{\vskip - \smallskipamount}
+% \addtobeamertemplate{block definition begin}{\vskip - \bigskipamount}{}
+% \addtobeamertemplate{block definition end}{}{\vskip - \smallskipamount}
+
+% PARA VER SECCIONES HORIZONTALMENTE
+\setbeamertemplate{headline}{
+\leavevmode
+\hbox{
+\begin{beamercolorbox}[wd=1.1\paperwidth,ht=4ex,dp=2ex]{palette quaternary}
+\insertsectionnavigationhorizontal{\paperwidth}{\hskip 0pt plus1filll}{\hskip 0pt plus1filll}
+\end{beamercolorbox}
+% 
+}
+% 
+}
+% SECCIONES EN PÁGINAS.
+\setbeamerfont{section title}{parent=title}
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+	    \begin{beamercolorbox}[sep=12pt,center]{secciones}
+    \usebeamerfont{frametitle}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+% )))
+
+% === COLORS === (((
+\beamertemplatenavigationsymbolsempty % for remove the nav. symb.
+\mode<presentation>
+
+% === list of colors === (((
+
+% === 1 === (((
+% rgb(128, 128, 255)
+% rgb(255, 77, 204)
+% rgb(191, 212, 255)
+% )))
+
+% === 2 === (((
+%  rgb(230, 128, 128)
+%  rgb(92,   121,  126)
+%  rgb(136,  129,  101)
+% )))
+
+% === 3 === (((
+% rgb(140, 129, 255)
+% rgb(231, 77, 195)
+% rgb(51, 230, 153)
+% )))
+
+% === 4 === (((
+% rgb(4, 57, 100)
+% rgb(76, 128, 128)
+% rgb(47, 155, 1)
+% )))
+
+% === 5 === (((
+% rgb(90, 16, 31)
+% rgb(243, 77, 65)
+% rgb(230, 77, 102)
+% )))
+
+% === 6 === (((
+% rgb(140, 129, 255)
+% rgb(231, 77, 195)
+% rgb(51, 230, 153)
+% )))
+
+% === 7 === (((
+% rgb(22, 44, 61)
+% rgb(104, 131, 142)
+% rgb(144, 174, 184)
+% )))
+
+% === 8 === (((
+% rgb(101, 28, 39)
+% rgb(92, 125, 15)
+% rgb(112, 29, 47)
+% )))
+
+% === 9 === (((
+% rgb(186, 0, 77)
+% rgb(68, 61, 204)
+% rgb(200, 69, 7)
+% )))
+
+% === 10 === (((
+% rgb(128, 128, 102)
+% rgb(255, 102, 102)
+% rgb(0, 0, 0)
+% )))
+
+% === 11 === (((
+% rgb(57, 91, 123)
+% rgb(205, 51, 102)
+% rgb(187, 162, 1)
+% )))
+
+% === 12 === (((
+% rgb(241, 106, 77)
+% rgb(0, 120, 154)
+% rgb(55, 189, 178)
+% )))
+
+% === 13 === (((
+% rgb(4, 57, 100)
+% rgb(51, 102, 77)
+% rgb(47, 155, 1)
+% )))
+
+% === 14 === (((
+% rgb(232, 134, 101)
+% rgb(0, 0, 70)
+% rgb(187, 162, 142)
+% )))
+
+% === 15 === (((
+% rgb(99, 76, 58)
+% rgb(67, 82, 84)
+% rgb(95, 86, 81)
+% )))
+
+% === 16 === (((
+% rgb(47, 40, 94)
+% rgb(230, 77, 102)
+% rgb(54, 114, 8)
+% )))
+
+% === 17 === (((
+% rgb(21, 48, 73)
+% rgb(68, 98, 98)
+% rgb(59, 98, 11)
+% )))
+
+% === 18 === (((
+% rgb(166, 134, 93)
+% rgb(230, 128, 15)
+% rgb(253, 245, 21)
+% )))
+
+% === 19 === (((
+% rgb(231, 41, 113)
+% rgb(39, 24, 103)
+% rgb(122, 30, 100)
+% )))
+
+% === 20 === (((
+% rgb(77, 128, 102)
+% rgb(179, 128, 128)
+% rgb(102, 179, 179)
+% )))
+
+% === 21 === (((
+% rgb(174, 0, 1)
+% rgb(0, 102, 179)
+% rgb(230, 102, 0)
+% )))
+
+% === 22 === (((
+% rgb(141, 129, 245)
+% rgb(204, 147, 203)
+% rgb(243, 169, 122)
+% )))
+
+% === 23 === (((
+% rgb(52, 101, 141)
+% rgb(218, 167, 11)
+% rgb(133, 125, 10)
+% )))
+
+% === 24 === (((
+% rgb(105, 106, 171)
+% rgb(255, 163, 188)
+% rgb(168, 173, 209)
+% )))
+
+% === 25 === (((
+% rgb(105, 106, 171)
+% rgb(153, 49, 80)
+% rgb(162, 166, 202)
+% )))
+
+% === 26 === (((
+% rgb(140, 129, 255)
+% rgb(231, 77, 195)
+% rgb(51, 230, 153)
+% )))
+
+% === 27 === (((
+% rgb(235, 90, 73)
+% rgb(93, 128, 20)
+% rgb(254, 214, 7)
+% )))
+
+% === 28 === (((
+% rgb(116, 45, 41)
+% rgb(179, 77, 77)
+% rgb(139, 108, 1)
+% )))
+
+% === 29 === (((
+% rgb(77, 102, 77)
+% rgb(77, 77, 77)
+% rgb(144, 206, 123)
+% )))
+
+% === 30 === (((
+% rgb(255, 77, 102)
+% rgb(102, 128, 102)
+% rgb(235, 202, 143)
+% )))
+
+% === 31 === (((
+% rgb(13, 71, 155)
+% rgb(102, 102, 102)
+% rgb(230, 77, 102)
+% )))
+
+% === 32 === (((
+% rgb(252, 169, 44)
+% rgb(26, 128, 179)
+% rgb(190, 95, 123)
+% )))
+
+% === 33 === (((
+% rgb(12, 100, 246)
+% rgb(77, 102, 102)
+% rgb(152, 206, 25)
+% )))
+
+% === 34 === (((
+% rgb(51, 102, 77)
+% rgb(4, 57, 100)
+% rgb(47, 155, 1)
+% )))
+
+% === 35 === (((
+% rgb(240, 90, 40)
+% rgb(53, 37, 126)
+% rgb(157, 40, 53)
+% )))
+
+% === 36 === (((
+%  rgb(230, 128, 128)
+%  rgb(92,   121,  126)
+%  rgb(136,  129,  101)
+% )))
+
+% === 37 === (((
+%  rgb(230, 128, 128)
+%  rgb(92,   121,  126)
+%  rgb(136,  129,  101)
+% )))
+
+% === 38 === (((
+% rgb(105, 0, 56)
+% rgb(0, 77, 77)
+% rgb(128, 26, 9)
+% )))
+
+% === 39 === (((
+% rgb(241, 106, 77)
+% rgb(0, 120, 154)
+% rgb(55, 189, 178)
+% )))
+
+% === 40 === (((
+% rgb(102, 128, 179)
+% rgb(77, 128, 128)
+% rgb(148, 222, 206)
+% )))
+
+% === 41 === (((
+% rgb(51, 102, 153)
+% rgb(236, 102, 102)
+% rgb(137, 137, 137)
+% )))
+
+% === 42 === (((
+% rgb(240, 87, 90)
+% rgb(106, 23, 49)
+% rgb(248, 156, 143)
+% )))
+
+% === 43 === (((
+% rgb(47, 60, 152)
+% rgb(0, 139, 206)
+% rgb(189, 230, 252)
+% )))
+
+% === 44 === (((
+% rgb(4, 57, 100)
+% rgb(76, 128, 128)
+% rgb(47, 155, 1)
+% )))
+% )))
+
+\definecolor{maincolor}{RGB}{<++>} % main color
+\definecolor{titlecolor}{RGB}{<++>} % title color
+
+\setbeamercolor{alerted text}{parent=palette secondary}
+\setbeamercolor*{palette primary}{   fg=white     , bg=maincolor}
+\setbeamercolor*{palette secondary}{ fg=black     , bg=titlecolor!40}
+\setbeamercolor*{palette tertiary}{  fg=white , bg=black}
+\setbeamercolor*{palette quaternary}{fg=white     , bg=black!20!maincolor}
+
+\setbeamercolor*{titlelike}{parent=palette secondary}
+\setbeamercolor{frametitle}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=maincolor!15!white,fg=black}
+\setbeamercolor{block title}{bg=maincolor!90!blue,fg=white}
+
+\setbeamercolor{block title example}{bg=maincolor!40!blue,fg=white}
+\setbeamercolor{block body example}{parent=normal text,use=block title,bg=maincolor!15!white,fg=black}
+\setbeamercolor{item projected}{bg=maincolor}
+
+\setbeamercolor{section title}{parent=titlelike}
+\setbeamercolor{secciones}{fg=black,bg=titlecolor!20}
+\setbeamercolor{section in head}{parent=palette quaternary}
+\setbeamertemplate{section in head/foot shaded}{\color{black!70!maincolor}\usebeamertemplate{section in head/foot}}
+\mode<all>
+% )))
+
+% === PORTADA === (((
+\newcommand{\portada}{
+{
+\usebackgroundtemplate{\includegraphics[width=  \paperwidth]{IMAGENES/PORTADA/<++>}}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+}
+}
+% )))
