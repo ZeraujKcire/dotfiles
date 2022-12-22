@@ -10,7 +10,7 @@ let g:quicktex_c  = {
 			\'flo' : "float <+++>;",
 			\'fo' : "for (i=0;i<<+++>;i++) <++>",
 			\'foj' : "for (j=0;j<<+++>;j++) <++>",
-			\'fuun' : "#include \"functions.h\"",
+			\'fun' : "#include \"functions.h\"",
 			\'ma' : "int main(){\n<+++>\n}",
 			\'in' : "#include<<+++>>",
 			\'i' : "int <+++>;",

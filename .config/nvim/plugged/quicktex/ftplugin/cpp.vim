@@ -1,5 +1,6 @@
 let g:quicktex_cpp  = {
 			\' '   : "\<ESC>:call search('<++>')\<CR>\"_c/+>/e\<CR>",
+			\'N' : "NULL ",
 			\'bo' : "bool <+++>(<++>){\n<++>\n}",
 			\'ci' : "cin>><+++>;",
 			\'cin' : "cin.ignore(numeric_limits<int>::max(),'\n');",
@@ -16,6 +17,7 @@ let g:quicktex_cpp  = {
 			\'i' : "int <+++>;",
 			\'if' : "if(<+++>) <++>;",
 			\'if1' : "if(<+++>){\n<++>\n}",
+			\'n' : "NULL ",
 			\'us' : "using namepsace std;",
 			\'usi' : "using namepsace std;",
 			\'vo' : "void <+++>(<++>){\n<++>\n}",

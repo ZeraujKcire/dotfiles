@@ -84,7 +84,7 @@ map('v','<right>','<nop>')
 -- )))
 
 -- === SPELL CHECK === (((
-map('n','<M-w>',':setlocal spell! spelllang=en<CR><CR>')
+map('n','<M-w>',':setlocal spell! spelllang=es<CR><CR>')
 map('n','<C-S-ñ>',']s')
 map('n','<C-S-j>','[s')
 map('n','<M-c>','z=')
@@ -161,15 +161,17 @@ g.sendtowindow_use_defaults = 1
 -- === LaTeX === (((
 local TeX = api.nvim_create_augroup("TeXgroup", {clear = true})
 local TeX1 = api.nvim_create_augroup("TeXgroup1", {clear = true})
-au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter>', false) end)
+local Bib = api.nvim_create_augroup("Bibgroup", {clear = true})
+au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter><CR>', false) end)
 au_c("BufWritePost", TeX, "*.tex" , "silent ! xelatex %")
 au_m("FileType", TeX1, "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
 au_m("FileType", TeX1, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
-au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR>' , false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
+au_c("FileType", Bib, "bib", "set foldmethod=syntax")
 g.tex_flavor = 'latex'
 -- )))
 
@@ -241,6 +243,8 @@ au_m("FileType", CSVg, "csv",  function() map('n', '<C-b>', "ggVG:'<,'>'<'>!colu
 -- === INFO === (((
 local INFO = api.nvim_create_augroup("Infogroup", {clear = true})
 au_c('BufReadPre', INFO, '*.info', "set filetype=info")
+au_m("FileType", INFO, 'info', function () map('n', '<C-s>', "vip:'<,'>norm I [/Page <CR>vip:'<,'>norm A /OUT pdfmark<CR>") end)
+-- au_m("FileType", INFO, 'info', function () map('n', '<C-S>', "I[/Cout ") end)
 -- -- )))
 
 -- === COLOR PICKER === (((

@@ -48,6 +48,7 @@ set recolor-keephue "true"
 # Title on bars
 set window-title-basename "true"
 set statusbar-basename "true"
+# set guioptions none
 
 # Copy Text
 set selection-clipboard clipboard
