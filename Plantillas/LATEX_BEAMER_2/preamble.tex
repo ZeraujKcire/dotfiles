@@ -1,17 +1,15 @@
  
 % === DATOS === (((
-\title{\textsc{<++>}}
+\title{<++>}
 \author{Por Erick I. Rodríguez Juárez.}
 \institute{UAA. LMA.}
 \date{\today}
-% for backgrounds with no space.
 % \author{\colorbox{titlecolor!20}{Por Erick I. Rodríguez Juárez.}}
 % \institute{\colorbox{titlecolor!20}{UAA. LMA.}}
 % \date{\colorbox{titlecolor!20}{\today}}
 % )))
 
 % === PAQUETES === (((
-% \usetheme{Warsaw}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -71,8 +69,9 @@
 % === BEAMER TEMPLATE === (((
 % DESPLIEGUE EN VARIAS DIAPOSITIVAS.
 % display un item a la vez
-% \beamerdefaultoverlayspecification{<+->}
+% \beamerdefaultoverlayspecification{<+(1)->}
 % TITULOS EN SMALL CAPS
+\setbeamerfont{title}{family=\scshape\huge}
 \setbeamerfont{frametitle}{family=\scshape\LARGE}
 \setbeamerfont{section in head/foot}{size = \scriptsize, family=\scshape}
 
@@ -417,6 +416,7 @@
 
 % === PORTADA === (((
 \newcommand{\portada}{
+\addfontfeature{LetterSpace=-5}
 {
 \usebackgroundtemplate{\includegraphics[width=  \paperwidth]{IMAGENES/PORTADA/<++>}}
 \begin{frame}[plain]
