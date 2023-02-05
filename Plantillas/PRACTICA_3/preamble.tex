@@ -64,6 +64,19 @@
 \renewcommand{\figurename}{Figura}
 % )))
 
+% === HEADER === (((
+\newcommand{\fakesc}[1]{\uppercase{{\large #1}}}
+\newcommand{\othersc}[1]{\uppercase{{\scriptsize  #1}}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\addfontfeature{LetterSpace=-5}U\othersc{NIVERSIDAD} A\othersc{UTÓNOMA} \othersc{DE} A\othersc{GUASCALIENTES} \\Departamento de Estadística. Control Estadístico de Calidad. \\ MIP. María Alejandra Márquez Reyes. }
+\fancyhead[R]{\addfontfeature{LetterSpace=-5}L\othersc{a} C\othersc{arta} C\othersc{usum} -- \thedate \\ \theauthor\\ {\itshape \rightmark}}
+\fancyfoot[C]{\thepage}
+% \fancyfoot[R]{\textit{Left footer}}
+\renewcommand{\headrulewidth}{1pt}
+% \chead[\thesection]{La Carta CUSUM.}
+% )))
+
 % === PORTADA === (((
 % \usepackage{fancyhdr}
 \author{Por Erick I. Rodríguez Juárez.}

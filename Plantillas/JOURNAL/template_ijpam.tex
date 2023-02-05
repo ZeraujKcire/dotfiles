@@ -1,0 +1,95 @@
+
+\documentclass[twoside,11pt,leqno]{article}
+
+% Any additional packages needed should be included after jmlr2e.
+% Note that jmlr2e.sty includes epsfig, amssymb, natbib and graphicx,
+% and defines many common macros, such as 'proof' and 'example'.
+%
+% It also sets the bibliographystyle to plainnat; for more information on
+% natbib citation styles, see the natbib documentation, a copy of which
+% is archived at http://www.jmlr.org/format/natbib.pdf
+
+\usepackage{itjournal2}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+% Definitions of handy macros can go here
+%\numberwithin{equation}{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Pro}{Proof of Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+\let\oldproofname=\proofname
+\renewcommand{\proofname}{\rm\bf{\oldproofname}}
+
+
+
+\usepackage[all]{xy}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+
+\itjournalheading{N.}{...--}{... (1--8)}
+
+% Short headings should be running head and authors last names
+
+\ShortHeadings{article title}{name of author(s)}
+\firstpageno{1}
+
+%\usepackage{nccfoots}
+
+\begin{document}
+
+\title{article title}
+
+\author{\name author1\\
+       \addr ....\\
+  ...\\
+       \\\email{} \AND \name author2 \\\addr \\\email{}}
+
+%\editor{Corsini}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{keywords}
+
+\end{keywords}
+
+
+\section{Introduction}
+
+
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{1}
+
+
+\bibitem{2}
+
+
+
+
+\end{thebibliography}.
+
+\noindent Accepted: .....
+
+
+\end{document}
