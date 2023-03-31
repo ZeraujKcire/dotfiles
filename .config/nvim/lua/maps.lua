@@ -8,7 +8,7 @@
 -- ░██ ░░██░░██████  ██      ██████ 
 -- ░░   ░░  ░░░░░░  ░░      ░░░░░░  
 
--- === VARIABLES === (((
+-- === FUNCTIONS === (((
 -- aliases
 local cmd = vim.cmd
 local g = vim.g
@@ -51,21 +51,57 @@ map('','Ñ','$')
 -- )))
 
 -- === GENERAL === (((
-map("", "<M-a>",":'<'>!column -t -s ''<left>")
-map('','<Insert>','R')
-map('n','<C-w>',':set wrap!<CR>')
-map('','s',':s///g<left><left><left>')
-map('n','S',':%s///g<left><left><left>', false)
-map('n','Q','@',false)
 map('n','<M-d>',':au!<CR>',false)
 map('n','<M-n>',':Lex<bar> vertical resize 30<CR>')
 cmd([[command W w]])
 map('n','<C-q>','ZZ')
 -- )))
 
+-- === TEXT === (((
+map("", "<M-a>",":'<'>!column -t -s ''<left>")
+map('','<Insert>','<nop>')
+map('n','<C-w>',':set wrap!<CR>')
+map('','s',':s///g<left><left><left>')
+map('n','S',':%s///g<left><left><left>', false)
+map('n','Q','@',false)
+-- Se cancelan todos los g mappings.
+cmd([[
+function! SuppressAllStartingWith(c1)
+  let c2 = nr2char(getchar())
+  if maparg(a:c1.c2, 'n') != ''
+    return a:c1.c2
+  else
+    return '\<Nop>'
+  endif
+endfunction
+nnoremap <expr> g SuppressAllStartingWith('g')
+]])
+-- Numbering
+map('n','g<C-a>','g<C-a>',false)
+-- Capitalization
+map('n','g','gu',false)
+map('v','g','gu')
+map('n','G','gU',false)
+map('v','G','gU')
+map('n','h','~',false)
+map('v','h','~',false)
+-- Join and separate lines
+map('n','z','gq',false)
+map('n','zz','gqq')
+map('v','z','gq')
+map('n','<C-z>','J')
+map('n','<M-z>','gJ')
+map('v','<C-z>','J')
+map('v','<M-z>','gJ')
+map('n','gv','gv')
+-- Add at begin and the end of line
+map('v','<C-a>',":norm A ")
+map('v','<C-i>',":norm I ")
+-- )))
+
 -- === TERMINAL === (((
 map('t','<Esc>','<C-\\><C-n>',false)
-vim.cmd([[autocmd TermClose * execute 'bdelete! ' . expand('<abuf>')]])
+cmd([[autocmd TermClose * execute 'bdelete! ' . expand('<abuf>')]])
 -- )))
 
 -- === DISABLE MOUSE === (((
@@ -85,6 +121,7 @@ map('v','<right>','<nop>')
 
 -- === SPELL CHECK === (((
 map('n','<M-w>',':setlocal spell! spelllang=es<CR><CR>')
+map('n','<M-W>',':setlocal spell! spelllang=')
 map('n','<C-S-ñ>',']s')
 map('n','<C-S-j>','[s')
 map('n','<M-c>','z=')
@@ -154,30 +191,30 @@ map('n','<M-S-ñ>',':vertical resize +5<CR>')
 map('n','<M-K>',':resize -3<CR>')
 map('n','<M-L>',':resize +3<CR>')
 -- Dividir la ventana verticalmente.
-map('','<C-s>', ':vs<CR>',false)
+map('n','<C-s>', ':vs<CR>',false)
+map('n','<C-d>', ':sp<CR>',false)
 g.sendtowindow_use_defaults = 1
 -- )))
 
 -- === LaTeX === (((
-local TeX = api.nvim_create_augroup("TeXgroup", {clear = true})
-local TeX1 = api.nvim_create_augroup("TeXgroup1", {clear = true})
-local Bib = api.nvim_create_augroup("Bibgroup", {clear = true})
+local TeX = api.nvim_create_augroup("TeXgroup", { clear = true })
+local TeXN = api.nvim_create_augroup("TeXgroupNew", { clear = true })
 au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter><CR>', false) end)
 au_c("BufWritePost", TeX, "*.tex" , "silent ! xelatex %")
-au_m("FileType", TeX1, "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
-au_m("FileType", TeX1, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
+-- au_c("FileType", TeX , "*.tex", cmd([[command p silent ! pdflatex %]]))
+-- au_m("FileType", TeX,  "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
+-- au_m("FileType", TeXN, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
+-- map('n', '<M-p>', function() au_c("FileType", TeX, "*.tex", ":! xelatex %") end, true)
+-- map('n', '<M-x>', function() au_c("FileType", TeX, "*.tex", ":! xelatex %") end, true)
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
 au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR>' , false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
 au_c("FileType", Bib, "bib", "set foldmethod=syntax")
+au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':%s/% \\\\pause/\\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
+au_m("FileType", TeX, "tex", function() map('n', '<M-O>', ':%s/\\\\pause/% \\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
 g.tex_flavor = 'latex'
--- )))
-
--- === vim === (((
--- autocmd FileType vim inoremap <tab><tab> <Esc>/<++><Enter>"_c4l
--- autocmd FileType vim inoremap new<tab> autocmd<space>FileType<space>tex<space>inoremap<space>
 -- )))
 
 -- === Rscript === (((
@@ -188,7 +225,7 @@ au_m("FileType", Rg, "r", function() map('n', '<M-c>', ':sp<CR>:term<CR><Esc>:se
 au_m("FileType", Rg, "r", function() map('n', '<M-r>', ':au BufWritePost *.r ! Rscript % > output.txt<CR><CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-o>', ':vs output.txt<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-p>', ':vs functions.r<CR>',false) end)
-au_m("FileType", Rg, "r", function() map('n', '<C-d>', ':vs datos.txt<CR>',false) end)
+-- au_m("FileType", Rg, "r", function() map('n', '<C-d>', ':vs datos.txt<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('t', '<C-q>', '<Esc>iq()<CR>exit<CR>') end)
 au_m("FileType", Rg, "text", function() map('n', '<C-f>', "ggVG:s/\t/<space>/g<CR>gv:'<,'>'<'>!column -t -s ' '<CR>") end)
 au_m("FileType", Rg, "text", function() map('n', '<C-b>', "ggVG:'<,'>'<'>!column -t -s ' '<CR>") end)

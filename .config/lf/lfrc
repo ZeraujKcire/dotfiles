@@ -173,9 +173,10 @@ cmd xelatex_R      %cp -R ~/Plantillas/LATEX_R .
 cmd beamer_pdf     %cp -R ~/Plantillas/LATEX_BEAMER .
 cmd beamer_xel     %cp -R ~/Plantillas/LATEX_BEAMER_2 .
 cmd tarea_pdf      %cp -R ~/Plantillas/LATEX_TAREAS .
-cmd tikz_xel       %cp -R ~/Plantillas/LATEX_TIKZ/ .
+cmd tikz_xel       %cp -R ~/Plantillas/LATEX_TIKZ_XELATEX/ .
 cmd tikz_tex_norm  %cp -R ~/Plantillas/LATEX_TIKZ_NORMAL/ .
 cmd license        %cp -R ~/Plantillas/GIT/LICENSE.txt .
+cmd ams_math       %cp -R ~/Plantillas/AMS_ART/ .
 # cmd clear_tex      %find . -type f ! -name '*.tex' ! -name '*.sty' ! -name '*.pdf' ! -name '*.bib' ! -name '*.txt' ! -name '*.doc*' ! -name '*.png' ! -name '*.PNG' ! -name '*.ods' ! -name '*.r' ! -name '*.R' ! -name '*.jpeg' -delete
 cmd clear_tex %find . -regextype posix-egrep -regex ".*\.(aux|log|nav|out|snm|toc|bbl|blg)$" -type f -delete
 #}} 
@@ -210,6 +211,7 @@ map mlr
 map mti
 map mlt
 map mli
+map mas
 map r
 map ñ
 map J
@@ -257,6 +259,7 @@ map mti tikz_xel
 map mlt tikz_tex_norm
 map mlr xelatex_R
 map mli license
+map mas ams_math
 map r $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/.*\./\./g')'<home><right><right><right><right><right><right><right><right>"
 map <c-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/\..*/\./g')'<left>"
 map R $lf -remote "send $id push :rename<space>''<left>"

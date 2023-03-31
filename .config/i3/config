@@ -33,10 +33,11 @@ bindsym $mod+Shift+o exec poweroff
 
 # start program launcher
 bindsym $mod+n exec kitty 'lfub'
-bindsym $mod+m exec "kitty cmus";exec "kitty cava";focus left
+bindsym $mod+m exec "kitty cmus";
 bindsym $mod+g exec "kitty links www.google.com"
 bindsym $mod+Shift+g exec qutebrowser
 bindsym $mod+p exec "kitty htop"
+bindsym $mod+t exec telegram-desktop
 
 # bindsym $mod+b exec min
 bindsym $mod+d exec --no-startup-id rofi -show drun
