@@ -178,6 +178,8 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)xcalc"] floating enable
 for_window [class="Xfburn"] floating enable
+for_window [class="Xfburn"] floating enable
+for_window [class="Xboard"] floating enable
 # for_window [class="Gpick"] floating enable
 
 # Assignment to workspaces.

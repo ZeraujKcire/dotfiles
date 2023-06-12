@@ -60,13 +60,6 @@
 \setlength{\parindent}{0mm}
 % )))
 
-% === SECTIONS === (((
-\usepackage{nameref}
-\makeatletter
-\newcommand*{\currentname}{\@currentlabelname}
-\makeatother
-% )))
-
 % === BEAMER TEMPLATE === (((
 % DESPLIEGUE EN VARIAS DIAPOSITIVAS.
 % display un item a la vez
@@ -74,7 +67,7 @@
 % TITULOS EN SMALL CAPS
 \setbeamerfont{title}{family=\scshape\huge}
 \setbeamerfont{frametitle}{family=\scshape\LARGE}
-\setbeamerfont{section in head/foot}{size = \scriptsize, family=\scshape}
+\setbeamerfont{section in head/foot}{size = \normalsize, family=\scshape}
 
 % sin footline
 \setbeamertemplate{footline}{}
@@ -97,7 +90,7 @@
 \setbeamertemplate{headline}{
 \leavevmode
 \hbox{
-\begin{beamercolorbox}[wd=1.1\paperwidth,ht=4ex,dp=2ex]{palette quaternary}
+\begin{beamercolorbox}[wd=1.02\paperwidth,ht=4ex,dp=2ex]{palette quaternary}
 \insertsectionnavigationhorizontal{\paperwidth}{\hskip 0pt plus1filll}{\hskip 0pt plus1filll}
 \end{beamercolorbox}
 % 
@@ -109,7 +102,7 @@
 \setbeamertemplate{section page}
 {
     \begin{centering}
-	    \begin{beamercolorbox}[sep=12pt,center]{secciones}
+	    \begin{beamercolorbox}[wd= \linewidth ,sep=12pt,center]{secciones}
     \usebeamerfont{frametitle}\insertsection\par
     \end{beamercolorbox}
     \end{centering}

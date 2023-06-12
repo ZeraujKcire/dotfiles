@@ -4,23 +4,39 @@
 
 % === PORTADA === (((
 \portada
-\begin{frame}[plain]
+\begin{frame}[plain,t]
 	\frametitle{\centerline{Contenidos.}}
 	\begin{minipage}[t]{0.45\linewidth}
+		% \setlength{\parskip}{2ex}
 		\tableofcontents[sections={1-3}]
+		% \tableofcontents[part=0]
 	\end{minipage}
 	\begin{minipage}[t]{0.45\linewidth}
+		% \setlength{\parskip}{2ex}
 		\tableofcontents[sections={4-6}]
+		% \tableofcontents[part=1]
 	\end{minipage}
 \end{frame}
 % )))
 
-\section{<++>} % (((
+\section[<++>]{<++>} % (((
 \frame{\sectionpage}
 \begin{frame}[t]
-	\frametitle{\currentname}
+	\frametitle{\secname}
 	<++>
 \end{frame}
+% )))
+
+% Aditional sections.
+% \addtocounter{part}{1}
+
+% === REFERENCIAS === (((
+% \begin{frame}[t,allowframebreaks]
+% \frametitle{Referencias.}
+% \bibliography{Referencias}
+% \beamerdefaultoverlayspecification{}
+% \bibliographystyle{unsrt}
+% \end{frame}
 % )))
 
 \end{document}

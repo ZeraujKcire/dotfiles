@@ -177,6 +177,8 @@ cmd tikz_xel       %cp -R ~/Plantillas/LATEX_TIKZ_XELATEX/ .
 cmd tikz_tex_norm  %cp -R ~/Plantillas/LATEX_TIKZ_NORMAL/ .
 cmd license        %cp -R ~/Plantillas/GIT/LICENSE.txt .
 cmd ams_math       %cp -R ~/Plantillas/AMS_ART/ .
+cmd simulacion     %cp -R ~/Plantillas/TEMPLATE_SIMULACION/ .
+cmd chess          %cp -R ~/Plantillas/CHESS .
 # cmd clear_tex      %find . -type f ! -name '*.tex' ! -name '*.sty' ! -name '*.pdf' ! -name '*.bib' ! -name '*.txt' ! -name '*.doc*' ! -name '*.png' ! -name '*.PNG' ! -name '*.ods' ! -name '*.r' ! -name '*.R' ! -name '*.jpeg' -delete
 cmd clear_tex %find . -regextype posix-egrep -regex ".*\.(aux|log|nav|out|snm|toc|bbl|blg)$" -type f -delete
 #}} 
@@ -212,6 +214,7 @@ map mti
 map mlt
 map mli
 map mas
+map mc
 map r
 map ñ
 map J
@@ -226,6 +229,7 @@ map dr
 map ds
 map di
 map <c-c>
+map msi
 # map x
 #}}
 
@@ -260,6 +264,7 @@ map mlt tikz_tex_norm
 map mlr xelatex_R
 map mli license
 map mas ams_math
+map msi simulacion
 map r $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/.*\./\./g')'<home><right><right><right><right><right><right><right><right>"
 map <c-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/\..*/\./g')'<left>"
 map R $lf -remote "send $id push :rename<space>''<left>"
@@ -276,6 +281,7 @@ map dr dragon
 map ds dragon-stay
 map di dragon-individual
 map <c-c> clear
+map mc chess
 # map x $lf -remote "send $id push :search<Enter>tex<Enter>"
 # map x push :search tex
 #}}
