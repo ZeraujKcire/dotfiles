@@ -1,0 +1,66 @@
+
+% === DATA === (((
+\author{\textit{Por Erick I. Rodríguez Juárez.}}
+\title{\textsc{<++>}}
+% \date{}
+% )))
+
+% === PACKAGES === (((
+% \usepackage[margin = 0.3in]{geometry}
+% \usepackage{xltxtra}
+\usepackage{fontspec}
+% \usepackage{amsmath}
+% \usepackage{amsfonts}
+% \usepackage{amssymb}
+\usepackage{fullpage}
+% \usepackage{expl3}
+% \usepackage{mathrsfs}
+% \usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{etoc}
+% )))
+
+% === FONT === (((
+\setmainfont[
+BoldFont       = bodonibi.ttf,
+ItalicFont     = Century modern italic2.ttf,
+BoldItalicFont = bodonibi.ttf,
+SmallCapsFont  = lmromancaps10-regular.otf
+]{lmmono10-regular.otf}
+% )))
+
+% === COMMANDS === (((
+\newcommand{\titulo}{
+\addfontfeature{LetterSpace=-5}
+\pagestyle{empty}
+\maketitle 
+\thispagestyle{empty}
+} 
+% )))
+
+% === SECTIONS === (((
+% Style of sections.
+\titleformat{\section}{\Large \scshape}{\thesection}{1em}{}
+\titleformat*{\subsection}{\centering \large \itshape}
+\titleformat*{\subsubsection}{}
+\titleformat*{\paragraph}{}
+
+% Levels of toc.
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% Style of numbers in toc.
+\def\theparagraph{(\alph{paragraph})}
+\titleformat*{\subparagraph}{}
+\def\thesubparagraph{\roman{subparagraph}.}
+\counterwithout{subsubsection}{subsection}
+
+% Toc name
+\renewcommand{\contentsname}{}
+
+% Page numbering in toc.
+\makeatletter
+\renewcommand{\@dotsep}{1000}
+\makeatother
+\pagenumbering{gobble}
+% )))

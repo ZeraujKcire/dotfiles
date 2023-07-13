@@ -1,0 +1,28 @@
+\documentclass{standalone}
+
+% === PAQUETES === (((
+\usepackage[utf8]{inputenc}
+\usepackage[LSBC5,T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xskak}
+\usepackage{chessboard}
+% )))
+
+\begin{document}
+
+\setsidefontfamily{}
+
+\setboardfontencoding{LSBC5}
+
+\setchessboard{
+	showmover = false,
+	color=green!50!black,
+	pgfstyle=color,
+	trimtocolor=black,
+	backboard,
+}
+\newgame
+\chessboard[
+]
+
+\end{document}
