@@ -1,5 +1,5 @@
 
-%=== PAQUETES === (((
+%=== PACKAGES === (((
 \usepackage[T1]{fontenc}
 \usepackage{<++>} % font
 \usepackage[letterspace=-50]{letterspace}
@@ -13,12 +13,12 @@
 \usepackage[utf8]{inputenc}
 % )))
 
-%=== COMANDOS === (((
+%=== COMMANDS === (((
 \newcommand{\dis}{\displaystyle}
 \newcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
 \newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice{\vcenter{\hbox{\huge $#1$}} }
 {\vcenter{\hbox{\Large $#1$}} }{#1}{#1}}\displaylimits}
-\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGENES/PORTADA/Sigma.png}} }
+\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGES/TITLEPAGE/Sigma.png}} }
 
 \DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
 \DeclareSymbolFontAlphabet{\mathit}{italics}
@@ -29,7 +29,7 @@
 \ExplSyntaxOff
 % )))
 
-% === MODIFICACIÓN DE APARIENCIA DE SECCIONES Y SUB === (((
+% === SECTIONS === (((
 \titleformat*{\section}{\large\normalfont\bfseries\centering}
 \titleformat*{\subsection}{\large\itshape \centering}
 % \setcounter{secnumdepth}{0}
@@ -38,14 +38,14 @@
 \renewcommand{\refname}{REFERENCIAS.}
 % )))
 
-% === PORTADA === (((
-\newcommand{\portada}{
+% === TITLEPAGE === (((
+\newcommand{\mytitlepage}{
 	\lsstyle
   \begin{titlepage}
   \centering
   \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{IMAGENES/logo_uaa.png}  
+    \includegraphics[scale=0.5]{IMAGES/TITLEPAGE/logo_uaa.png}  
   \end{figure}
   {\bfseries\Large\MakeUppercase{\textit{Universidad Autónoma de Aguascalientes.}} \par}
   \vspace{1cm}

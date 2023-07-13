@@ -165,11 +165,12 @@ cmd create_md %cp ~/Plantillas/MARKDOWN/markdown.md .
 # Latex {{
 cmd pdflatexfolder %cp -R ~/Plantillas/LATEX_1/ .
 cmd xelatexfolder  %cp -R ~/Plantillas/LATEX_2/ .
+cmd simple_xelatex %cp -R ~/Plantillas/LATEX_3/ .
 cmd practica_pdf   %cp -R ~/Plantillas/PRACTICA_1 .
 cmd practica_xel   %cp -R ~/Plantillas/PRACTICA_2 .
 cmd practica_contr %cp -R ~/Plantillas/PRACTICA_3 .
 cmd practica_xel_R %cp -R ~/Plantillas/PRACTICA_R .
-cmd xelatex_R      %cp -R ~/Plantillas/LATEX_R .
+cmd xelatex_R      %cp -R ~/Plantillas/LATEX_4 .
 cmd beamer_pdf     %cp -R ~/Plantillas/LATEX_BEAMER .
 cmd beamer_xel     %cp -R ~/Plantillas/LATEX_BEAMER_2 .
 cmd tarea_pdf      %cp -R ~/Plantillas/LATEX_TAREAS .
@@ -234,6 +235,8 @@ map msi
 #}}
 
 #{{ KEYBINDINGS.
+
+# System
 map + :set preview
 map - :set nopreview
 map . set hidden!
@@ -241,47 +244,59 @@ map c cut
 map dd trash
 map du file_size
 map e extract
-# map gt gototrash
+map W terminal_window
+map x chmod
+
+# Movements
 map j updir
-# map H umount_usb
 map h mount_usb
 map k down
 map l up
-map md mkdir
-map mf mkfile
-map mlb beamer_pdf
-map mbx beamer_xel
-map mlc practica_contr
-map mlp pdflatexfolder
-map mpp practica_pdf
-map mpr practica_xel_R
-map mpx practica_xel
-map mlx xelatexfolder
-map mmd create_md
-map mta tarea_pdf
-map mti tikz_xel
-map mlt tikz_tex_norm
-map mlr xelatex_R
-map mli license
-map mas ams_math
-map msi simulacion
-map r $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/.*\./\./g')'<home><right><right><right><right><right><right><right><right>"
-map <c-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/\..*/\./g')'<left>"
-map R $lf -remote "send $id push :rename<space>''<left>"
-map <a-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/ /_/g')'"
 map ñ open
 map J cd ~
 map K bottom
 map L top
-map W terminal_window
-map x chmod
+
+# Creation
+map md mkdir
+map mf mkfile
+
+# LaTeX
+map mlb1 beamer_pdf
+map mlb2 beamer_xel
+map mp3 practica_contr
+map ml1 pdflatexfolder
+map mp1 practica_pdf
+map mpr practica_xel_R
+map mp2 practica_xel
+map ml2 xelatexfolder
+map ml3 simple_xelatex
+map mmd create_md
+map mta tarea_pdf
+map mt1 tikz_xel
+map mt2 tikz_tex_norm
+map ml4 xelatex_R
+map mli license
+map mas ams_math
+map msi simulacion
+map mc chess
+
+# Rename
+map r $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/.*\./\./g')'<home><right><right><right><right><right><right><right><right>"
+map <c-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/\..*/\./g')'<left>"
+map R $lf -remote "send $id push :rename<space>''<left>"
+map <a-r> $lf -remote "send $id push :rename<space>'$(basename $f | sed 's/ /_/g')'"
+
+# Clear
+map <c-c> clear
 map <a-t> clear_tex
 map <c-d> reload
+
+# Dragon
 map dr dragon
 map ds dragon-stay
 map di dragon-individual
-map <c-c> clear
-map mc chess
+
 # map x $lf -remote "send $id push :search<Enter>tex<Enter>"
 # map x push :search tex
 #}}

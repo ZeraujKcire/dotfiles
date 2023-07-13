@@ -1,5 +1,5 @@
  
-% === DATOS === (((
+% === DATA === (((
 \title{<++>}
 \author{Por Erick I. Rodríguez Juárez.}
 \institute{UAA. LMA.}
@@ -9,7 +9,7 @@
 % \date{\colorbox{titlecolor!20}{\today}}
 % )))
 
-% === PAQUETES === (((
+% === PACKAGES === (((
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -18,7 +18,7 @@
 \usepackage{graphicx}
 % )))
 
-% === TIPOGRAFÍA === (((
+% === FONT === (((
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \usepackage{fontspec}
@@ -38,7 +38,7 @@
 \ExplSyntaxOff
 % )))
 
-% === COMANDOS === (((
+% === COMMANDS === (((
 \newcommand{\micita}[1]{\([\)\cite{#1}\(]\)}
 \newcommand{\dis}{\displaystyle}
 \renewcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
@@ -56,7 +56,7 @@
 \newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice
 {\vcenter{\hbox{\huge $#1$}}}
 {\vcenter{\hbox{\Large $#1$}}}{#1}{#1}}\displaylimits}
-\newcommand{\suma}{\operator{\includegraphics[scale=0.09]{IMAGENES/PORTADA/Sigma.png}}}
+\newcommand{\suma}{\operator{\includegraphics[scale=0.09]{IMAGES/TITLEPAGE/Sigma.png}}}
 \setlength{\parindent}{0mm}
 % )))
 
@@ -410,11 +410,11 @@
 \mode<all>
 % )))
 
-% === PORTADA === (((
+% === TITLEPAGE === (((
 \newcommand{\portada}{
 \addfontfeature{LetterSpace=-5}
 {
-\usebackgroundtemplate{\includegraphics[width=  \paperwidth]{IMAGENES/PORTADA/<++>}}
+\usebackgroundtemplate{\includegraphics[width=  \paperwidth]{IMAGES/TITLEPAGE/<++>}}
 \begin{frame}[plain]
 \titlepage
 \end{frame}

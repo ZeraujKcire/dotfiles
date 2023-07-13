@@ -13,6 +13,7 @@
 local cmd = vim.cmd
 local g = vim.g
 local api = vim.api
+
 -- single mappings
 local function map(mode,key,action,opts)
 	local options = {noremap = true, silent = false}
@@ -21,6 +22,7 @@ local function map(mode,key,action,opts)
 	end
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
+
 -- function to autocommand for a mapping
 local function au_m(event, group, pattern, mapping)
 	api.nvim_create_autocmd(event,{
@@ -29,6 +31,7 @@ local function au_m(event, group, pattern, mapping)
 		callback = mapping,
 	})
 end
+
 -- function to autocommand for a script
 local function au_c(event, group, pattern, command)
 	api.nvim_create_autocmd(event,{
@@ -60,7 +63,7 @@ map('n','<C-q>','ZZ')
 -- === TEXT === (((
 map("", "<M-a>",":'<'>!column -t -s ''<left>")
 map('','<Insert>','<nop>')
-map('n','<C-w>',':set wrap!<CR>')
+map('n','<C-w>',':set indentexpr=<CR>:set wrap!<CR>:execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>')
 map('','s',':s///g<left><left><left>')
 map('n','S',':%s///g<left><left><left>', false)
 map('n','Q','@',false)
@@ -87,8 +90,8 @@ map('n','h','~',false)
 map('v','h','~',false)
 -- Join and separate lines
 map('n','z','gq',false)
-map('n','zz','gqq')
-map('v','z','gq')
+-- map('n','zz','gqq')
+-- map('v','z','gq')
 map('n','<C-z>','J')
 map('n','<M-z>','gJ')
 map('v','<C-z>','J')
@@ -200,9 +203,27 @@ g.sendtowindow_use_defaults = 1
 local TeX = api.nvim_create_augroup("TeXgroup", { clear = true })
 local TeXN = api.nvim_create_augroup("TeXgroupNew", { clear = true })
 au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter><CR>', false) end)
--- au_c("BufWritePost", TeX, "*.tex" , "silent ! xelatex %")
-map('n', '<M-p>', ":silent ! pdflatex %<CR>")
-map('n', '<M-x>', ":silent ! xelatex %<CR>")
+au_c("BufWritePost", TeX, "*.tex" , 'silent ! mycomp %')
+
+-- vim.cmd([[
+-- func! Stl_filename()
+-- return expand('%:t:r')
+-- endfunc
+-- autocmd BufWritePre *.tex "silent " . (Stl_filename() == "preamble.tex" ? "" : "xelatex %")."<CR>"
+-- ]])
+
+-- au_c("BufWritePost", TeX, "*.tex" ,
+-- function()
+-- if vim.fn.expand('%') ~= "preamble.tex" then
+	-- command = "silent ! xelatex %"
+-- else
+	-- command = ""
+-- end
+-- end
+-- )
+
+-- map('n', '<M-p>', ":silent ! pdflatex %<CR>")
+-- map('n', '<M-x>', ":silent ! xelatex %<CR>")
 -- au_c("FileType", TeX , "*.tex", cmd([[command p silent ! pdflatex %]]))
 -- au_m("FileType", TeX,  "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
 -- au_m("FileType", TeXN, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
@@ -211,7 +232,8 @@ map('n', '<M-x>', ":silent ! xelatex %<CR>")
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
 au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
-au_m("FileType", TeX, "tex", function() map('n', '<C-p>', ':vs preamble.tex<CR>' , false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-P>', ':vs preamble.tex<CR>' , false) end)
+-- au_m("FileType", TeX, "tex", function() map('n', '<S-Tab>', ':sp preamble.tex<CR>' , false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
 au_c("FileType", Bib, "bib", "set foldmethod=syntax")
 au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':%s/% \\\\pause/\\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
@@ -284,6 +306,11 @@ local INFO = api.nvim_create_augroup("Infogroup", {clear = true})
 au_c('BufReadPre', INFO, '*.info', "set filetype=info")
 au_m("FileType", INFO, 'info', function () map('n', '<C-s>', "vip:'<,'>norm I [/Page <CR>vip:'<,'>norm A /OUT pdfmark<CR>") end)
 -- au_m("FileType", INFO, 'info', function () map('n', '<C-S>', "I[/Cout ") end)
+-- -- )))
+
+-- === TXT === (((
+local TXT = api.nvim_create_augroup("Txtgroup", {clear = true})
+au_c('BufReadPre', TXT, '*.txt', "set syntax=python")
 -- -- )))
 
 -- === COLOR PICKER === (((

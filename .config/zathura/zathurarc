@@ -41,7 +41,7 @@ map [normal] [ navigate right
 
 # Inverse colors.
 map i recolor
-# set recolor               "true"
+set recolor               "true"
 # set recolor-reverse-video "true"
 set recolor-keephue "true"
 

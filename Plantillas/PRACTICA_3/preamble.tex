@@ -1,5 +1,5 @@
 
-% === PAQUETES === (((
+% === PACKAGES === (((
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -25,7 +25,7 @@
 % \usepackage{bookmark}
 % )))
 
-% === TIPOGRAFÍA === (((
+% === FONT === (((
 \setmainfont[
   BoldFont       = bodonibi,
 	ItalicFont     = Century modern italic2.ttf,
@@ -34,13 +34,13 @@
 ]{Century_modern.ttf}
 % )))
 
-% === COMANDOS === (((
+% === COMMANDS === (((
 \newcommand{\dis}{\displaystyle}
 \newcommand{\qed}{\hspace{0.5cm}\rule{0.16cm}{0.4cm}}
 \newcommand{\micita}[1]{\((\)\cite{#1}\()\)}
 \newcommand{\operator}[1]{\mathop{\vphantom{\sum}\mathchoice{ \vcenter{\hbox{\huge $#1$}} }
 {\vcenter{ \hbox{\Large $#1$}} }{#1}{#1}}\displaylimits}
-\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGENES/PORTADA/Sigma.png}} }
+\newcommand{\suma}{\operator{ \includegraphics[scale=0.09]{IMAGES/TITLEPAGE/Sigma.png}} }
 \DeclareSymbolFont{italics}{\encodingdefault}{\rmdefault}{m}{it}
 \DeclareSymbolFontAlphabet{\mathit}{italics}
 \ExplSyntaxOn
@@ -50,7 +50,7 @@
 \ExplSyntaxOff
 % )))
 
-% === SECCIONES === (((
+% === SECTIONS === (((
 \newcommand{\fakesc}[1]{\uppercase{{\large #1}}}
 \newcommand{\othersc}[1]{\uppercase{{\scriptsize  #1}}}
 \titleformat*{\section}{\LARGE\normalfont}
@@ -77,7 +77,7 @@
 % \chead[\thesection]{La Carta CUSUM.}
 % )))
 
-% === PORTADA === (((
+% === TITLEPAGE === (((
 % \usepackage{fancyhdr}
 \author{Por Erick I. Rodríguez Juárez.}
 \date{\today}
