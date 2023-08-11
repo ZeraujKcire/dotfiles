@@ -46,12 +46,8 @@ endfunc
 set rulerformat=%60(%p%%\ \%=[%<\ \%{Stl_filename()}\ \]\ \%m\ \%=%Y%)
 ]])
 vim.cmd([[hi FloatBorder guibg=NONE]])
-o.shortmess = 'a'
+-- o.shortmess = 'a'
 o.cmdheight = 2
--- Custom write message
--- cmd([[
--- au BufWritePost * echo ''
--- ]])
 -- )))
 
 -- === CURSOR EN EL CENTRO === (((

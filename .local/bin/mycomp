@@ -1,5 +1,3 @@
 #!/bin/bash
 
-if [ $1 != "preamble.tex" ]; then
-	xelatex $1;
-fi
+[ $1 != "preamble.tex" ] && pdflatex $1

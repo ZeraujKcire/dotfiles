@@ -1,15 +1,15 @@
 
-set from = "nijerc@gmail.com"
-set realname = "Erick Juárez"
+set imap_user = "nijerc@gmail.com"
+# set realname = "Erick Juárez"
+set imap_pass = ""
 
 set editor = "nvim"
 
-set folder = "imaps://nijerc@gmail.com@imap.gmail.com:993"
-
-set spoolfile = "+INBOX"
-
 set smtp_url = "smtp://nijerc@gmail.com@smtp.gmail.com:587"
+set smtp_pass = ""
 
+set folder = "imaps://nijerc@gmail.com@imap.gmail.com:993"
+set spoolfile = "+INBOX"
 set record = "+Sent"
 set trash = "+Trash"
 set postponed = "+Drafts"

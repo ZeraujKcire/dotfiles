@@ -57,17 +57,21 @@ map('','Ñ','$')
 map('n','<M-d>',':au!<CR>',false)
 map('n','<M-n>',':Lex<bar> vertical resize 30<CR>')
 cmd([[command W w]])
-map('n','<C-q>','ZZ')
+map('','<Insert>','<nop>')
+map('i','<Insert>','<nop>')
+map('n','Q','@',false)
+map('n','<C-w>',':set indentexpr=<CR>:set wrap!<CR>:execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>')
+map('n', '<C-q>', '<nop>')
+-- map('i','e<Tab>','^ ')
 -- )))
 
 -- === TEXT === (((
+-- Edit Text
 map("", "<M-a>",":'<'>!column -t -s ''<left>")
-map('','<Insert>','<nop>')
-map('n','<C-w>',':set indentexpr=<CR>:set wrap!<CR>:execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>')
 map('','s',':s///g<left><left><left>')
+map('','<C-s>','"cyw:s///g<left><left><left><C-r>c<right>')
 map('n','S',':%s///g<left><left><left>', false)
-map('n','Q','@',false)
--- Se cancelan todos los g mappings.
+-- Cancel all g mappings
 cmd([[
 function! SuppressAllStartingWith(c1)
   let c2 = nr2char(getchar())
@@ -79,8 +83,6 @@ function! SuppressAllStartingWith(c1)
 endfunction
 nnoremap <expr> g SuppressAllStartingWith('g')
 ]])
--- Numbering
-map('n','g<C-a>','g<C-a>',false)
 -- Capitalization
 map('n','g','gu',false)
 map('v','g','gu')
@@ -88,22 +90,41 @@ map('n','G','gU',false)
 map('v','G','gU')
 map('n','h','~',false)
 map('v','h','~',false)
--- Join and separate lines
-map('n','z','gq',false)
--- map('n','zz','gqq')
--- map('v','z','gq')
-map('n','<C-z>','J')
-map('n','<M-z>','gJ')
+map('n', 'gv', 'gv')
+-- Separate lines
+map("n","z",":s/\\s\\+/\\r/g<CR>",false)
+map("v","z",":s/\\s\\+/\\r/g<CR>",false)
+-- Join lines
+map('n','<C-z>','J') -- adding space
 map('v','<C-z>','J')
+map('n','<M-z>','gJ') -- no space
 map('v','<M-z>','gJ')
-map('n','gv','gv')
 -- Add at begin and the end of line
-map('v','<C-a>',":norm A ")
-map('v','<C-i>',":norm I ")
+map('n','<C-a>',":norm A")
+map('n','<C-i>',":norm I")
+map('v','<C-a>',":norm A")
+map('v','<C-i>',":norm I")
+-- map('v','i','I')
+-- map('v','a','A')
+-- Arabic numbering
+cmd([[vmap <C-1> :<c-u>let i=1 \| '<,'>g/^/ s//\=i . ' '/ \| let i+=1<CR>]])
+map("n","<C-1>", ":r !printf '\\%s\\n' {1..}<left>")
+map("i","<C-1>", "<Esc>:r !printf '\\%s\\n' {1..}<left>")
+-- Alphabetical numbering
+cmd([[vmap <C-2> :<c-u>let i=0 \| '<,'>g/^/ s//\=nr2char(char2nr('a')+i) . ' '/ \| let i+=1<CR>]])
+map("n","<C-2>", ":r !printf '\\%s\\n' {a..}<left>")
+map("i","<C-2>", "<Esc>:r !printf '\\%s\\n' {a..}<left>")
+-- Replace 0 with arabic numbering
+cmd([[vmap <C-0> :<c-u>let i=1 \| '<,'>g/0/ s//\=i /g \| let i+=1<CR>]])
+-- cmd([[vmap <C-0> :<c-u>let i=1 \| '<,'>g/0/ s//\=i / \| let i+=1<CR>]])
+-- Replace 0 with alphabetical numbering
+cmd([[vmap <M-0> :<c-u>let i=0 \| '<,'>g/0/ s//\=nr2char(char2nr('a')+i) /g \| let i+=1<CR>]])
+-- cmd([[vmap <M-0> :<c-u>let i=0 \| '<,'>g/0/ s//\=nr2char(char2nr('a')+i) / \| let i+=1<CR>]])
 -- )))
 
 -- === TERMINAL === (((
 map('t','<Esc>','<C-\\><C-n>',false)
+map('n','<C-t>',':vs<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>A')
 cmd([[autocmd TermClose * execute 'bdelete! ' . expand('<abuf>')]])
 -- )))
 
@@ -170,74 +191,70 @@ map('i','[','[] <++><Esc>6ha')
 map('i','{','{} <++><Esc>6ha')
 map('i','¿','¿? <++><Esc>6ha')
 map('i','<','<> <++><Esc>6ha')
+map('n', '<C-i>', ":iu \"<CR>:iu '<CR>:iu (<CR>:iu [<CR>:iu {<CR>:iu ¿<CR>:iu <<CR>")
+-- cmd([[nmap <S-Tab> :exec printf("imap \" \"\" <++>\<Esc>6ha<CR> imap ' '' <++>\<Esc>6ha<CR> imap ( () <++>\<Esc>6ha<CR> imap [ [] <++>\<Esc>6ha<CR> imap { {} <++>\<Esc>6ha<CR> imap ¿¿? <++>\<Esc>6ha<CR> imap < <> <++>\<Esc>6ha<CR>")]])
 -- )))
 
 -- === SPLITS === (((
--- Moverse entre los splits.
+-- Move on splits
 map('n','<M-j>','<C-w>h')
 map('n','<M-k>','<C-w>j')
 map('n','<M-l>','<C-w>k')
 map('n','<M-ñ>','<C-w>l')
--- MOVE IN INSERT MODE.
-map('i','<M-j>','<Esc><C-w>h')
-map('i','<M-k>','<Esc><C-w>j')
-map('i','<M-l>','<Esc><C-w>k')
-map('i','<M-;>','<Esc><C-w>l')
--- MOVE IN INSERT MODE.
+-- Move in insert mode.
+map('i','<M-j>','<Esc><C-w>hi')
+map('i','<M-k>','<Esc><C-w>ji')
+map('i','<M-l>','<Esc><C-w>ki')
+map('i','<M-ñ>','<Esc><C-w>li')
+-- Move in insert mode.
 map('t','<M-j>','<Esc><C-w>h')
 map('t','<M-k>','<Esc><C-w>j')
 map('t','<M-l>','<Esc><C-w>k')
-map('t','<M-;>','<Esc><C-w>l')
+map('t','<M-ñ>','<Esc><C-w>l')
 -- Resize Splits
 map('n','<M-J>',':vertical resize -5<CR>')
 map('n','<M-S-ñ>',':vertical resize +5<CR>')
 map('n','<M-K>',':resize -3<CR>')
 map('n','<M-L>',':resize +3<CR>')
--- Dividir la ventana verticalmente.
-map('n','<C-s>', ':vs<CR>',false)
-map('n','<C-d>', ':sp<CR>',false)
+-- Split
+-- map('n','<C-s>', ':vs<CR>',false) -- vertically
+-- map('n','<C-h>', ':sp<CR>',false) -- horizontally
 g.sendtowindow_use_defaults = 1
 -- )))
 
 -- === LaTeX === (((
 local TeX = api.nvim_create_augroup("TeXgroup", { clear = true })
-local TeXN = api.nvim_create_augroup("TeXgroupNew", { clear = true })
 au_m("FileType", TeX, "tex", function()	map('n' , '<C-a>', ':!zathura<space>%:r.pdf<space>&<Enter><CR>', false) end)
 au_c("BufWritePost", TeX, "*.tex" , 'silent ! mycomp %')
-
--- vim.cmd([[
--- func! Stl_filename()
--- return expand('%:t:r')
--- endfunc
--- autocmd BufWritePre *.tex "silent " . (Stl_filename() == "preamble.tex" ? "" : "xelatex %")."<CR>"
--- ]])
-
--- au_c("BufWritePost", TeX, "*.tex" ,
--- function()
--- if vim.fn.expand('%') ~= "preamble.tex" then
-	-- command = "silent ! xelatex %"
--- else
-	-- command = ""
--- end
--- end
--- )
+-- au_c("BufRead", TeX, "*.tex", "set indentexpr=<CR>")
 
 -- map('n', '<M-p>', ":silent ! pdflatex %<CR>")
 -- map('n', '<M-x>', ":silent ! xelatex %<CR>")
 -- au_c("FileType", TeX , "*.tex", cmd([[command p silent ! pdflatex %]]))
 -- au_m("FileType", TeX,  "tex", function() map('n', '<M-p>', ':au BufWritePost *.tex silent ! pdflatex %<CR>') end)
+-- local TeXN = api.nvim_create_augroup("TeXgroupNew", { clear = true })
 -- au_m("FileType", TeXN, "tex", function() map('n', '<M-x>', ':au BufWritePost *.tex silent ! xelatex %<CR>') end)
 -- map('n', '<M-p>', function() au_c("FileType", TeX, "*.tex", ":! pdflatex %") end, true)
 --map('n', '<M-x>', function() au_c("FileType", TeX, "*.tex", ":! xelatex %") end, true)
+
 au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , false) end)
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
-au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':vs %:r.log<CR>/^l\\.\\d<CR><CR>', false) end)
+-- au_c("FileType", TeX, "DEF", "set syntax=tex")
+-- au_c("FileType", TeX, "CFG", "set syntax=tex")
+au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':7sp %:r.log<CR>/^l\\.\\d<CR>ll"bye<C-w>k:<C-r>b<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<M-O>', ':sp %:r.log<CR>/^l\\.\\d<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':vs %:r.log<CR>/^l\\.\\d<CR>ll"bye<C-w>h:<C-r>b<CR>', false) end)
+-- https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+-- https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+-- https://superuser.com/questions/234317/how-can-i-yank-multiple-lines-into-a-register
+-- https://vi.stackexchange.com/questions/11791/how-to-store-all-occurrences-of-a-multiline-search-in-a-register
 au_m("FileType", TeX, "tex", function() map('n', '<C-P>', ':vs preamble.tex<CR>' , false) end)
--- au_m("FileType", TeX, "tex", function() map('n', '<S-Tab>', ':sp preamble.tex<CR>' , false) end)
-au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR><CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<M-p>', ':sp preamble.tex<CR>' , false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-H>', ':sp preamble.tex<CR>' , false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-b>', ':vs Referencias.bib<CR>', false) end)
 au_c("FileType", Bib, "bib", "set foldmethod=syntax")
-au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':%s/% \\\\pause/\\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
-au_m("FileType", TeX, "tex", function() map('n', '<M-O>', ':%s/\\\\pause/% \\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
+-- au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':%s/% \\\\pause/\\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
+-- au_m("FileType", TeX, "tex", function() map('n', '<M-p>', ':%s/\\\\pause/% \\\\pause/g<CR>:vs preamble.tex<CR>:set nofoldenable<CR>/overlay<CR>:call ToggleComment()<CR>') end)
 g.tex_flavor = 'latex'
 -- )))
 

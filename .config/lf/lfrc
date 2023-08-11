@@ -163,25 +163,31 @@ cmd create_md %cp ~/Plantillas/MARKDOWN/markdown.md .
 #}}
 
 # Latex {{
-cmd pdflatexfolder %cp -R ~/Plantillas/LATEX_1/ .
-cmd xelatexfolder  %cp -R ~/Plantillas/LATEX_2/ .
-cmd simple_xelatex %cp -R ~/Plantillas/LATEX_3/ .
-cmd practica_pdf   %cp -R ~/Plantillas/PRACTICA_1 .
-cmd practica_xel   %cp -R ~/Plantillas/PRACTICA_2 .
-cmd practica_contr %cp -R ~/Plantillas/PRACTICA_3 .
-cmd practica_xel_R %cp -R ~/Plantillas/PRACTICA_R .
-cmd xelatex_R      %cp -R ~/Plantillas/LATEX_4 .
-cmd beamer_pdf     %cp -R ~/Plantillas/LATEX_BEAMER .
-cmd beamer_xel     %cp -R ~/Plantillas/LATEX_BEAMER_2 .
-cmd tarea_pdf      %cp -R ~/Plantillas/LATEX_TAREAS .
-cmd tikz_xel       %cp -R ~/Plantillas/LATEX_TIKZ_XELATEX/ .
-cmd tikz_tex_norm  %cp -R ~/Plantillas/LATEX_TIKZ_NORMAL/ .
-cmd license        %cp -R ~/Plantillas/GIT/LICENSE.txt .
-cmd ams_math       %cp -R ~/Plantillas/AMS_ART/ .
-cmd simulacion     %cp -R ~/Plantillas/TEMPLATE_SIMULACION/ .
-cmd chess          %cp -R ~/Plantillas/CHESS .
-# cmd clear_tex      %find . -type f ! -name '*.tex' ! -name '*.sty' ! -name '*.pdf' ! -name '*.bib' ! -name '*.txt' ! -name '*.doc*' ! -name '*.png' ! -name '*.PNG' ! -name '*.ods' ! -name '*.r' ! -name '*.R' ! -name '*.jpeg' -delete
-cmd clear_tex %find . -regextype posix-egrep -regex ".*\.(aux|log|nav|out|snm|toc|bbl|blg)$" -type f -delete
+cmd pdflatexfolder %cp -R ~/Plantillas/DOCUMENTS/LATEX/LATEX_1\ \(pdflatex\) .
+cmd xelatexfolder  %cp -R ~/Plantillas/DOCUMENTS/LATEX/LATEX_2\ \(xelatex\) .
+cmd simple_xelatex %cp -R ~/Plantillas/DOCUMENTS/LATEX/LATEX_3\ \(xelatex\ simple\) .
+cmd xelatex_R      %cp -R ~/Plantillas/DOCUMENTS/LATEX/LATEX_4\ \(xelatex\ R\) .
+
+cmd practica_pdf   %cp -R ~/Plantillas/DOCUMENTS/LATEX/PRACTICA_1\ \(pdflatex\) .
+cmd practica_xel   %cp -R ~/Plantillas/DOCUMENTS/LATEX/PRACTICA_2\ \(xelatex\) .
+cmd practica_contr %cp -R ~/Plantillas/DOCUMENTS/LATEX/PRACTICA_3\ \(xelatex\ header\) .
+
+cmd beamer_pdf     %cp -R ~/Plantillas/DOCUMENTS/BEAMER/LATEX_BEAMER_1\ \(pdflatex\) .
+cmd beamer_xel     %cp -R ~/Plantillas/DOCUMENTS/BEAMER/LATEX_BEAMER_2\ \(xelatex\) .
+
+cmd tarea_pdf      %cp -R ~/Plantillas/DOCUMENTS/SCHOOL/LATEX_TAREAS .
+cmd simulacion     %cp -R ~/Plantillas/DOCUMENTS/SCHOOL/TEMPLATE_SIMULACION/ .
+
+cmd tikz_xel       %cp -R ~/Plantillas/DRAWING/LATEX_TIKZ_XELATEX/ .
+cmd tikz_tex_norm  %cp -R ~/Plantillas/DRAWING/LATEX_TIKZ_NORMAL/ .
+cmd chess          %cp -R ~/Plantillas/DRAWING/CHESS .
+
+cmd license        %cp -R ~/Plantillas/PROGRAMMING/GIT/LICENSE.txt .
+cmd practica_xel_R %cp -R ~/Plantillas/PROGRAMMING/R .
+
+cmd ams_math       %cp -R ~/Plantillas/ARTICLES/AMS_ART/ .
+
+cmd clear_tex %find . -regextype posix-egrep -regex ".*\.(synctex\.gz|aux|log|nav|out|snm|toc|bbl|blg)$" -type f -delete
 #}} 
 
 #{{ CLEAN BINDINGS.
