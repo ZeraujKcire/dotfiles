@@ -138,6 +138,7 @@ cmd mkfile ${{
 
 # {{ cmd chmod
 cmd chmod %chmod +x "$f"
+cmd achmod %chmod -x "$f"
 # }}
 
 #{{ cmd terminal_window $
@@ -252,6 +253,7 @@ map du file_size
 map e extract
 map W terminal_window
 map x chmod
+map <c-x> achmod
 
 # Movements
 map j updir

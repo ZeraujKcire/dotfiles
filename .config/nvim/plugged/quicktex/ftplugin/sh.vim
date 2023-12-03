@@ -4,4 +4,5 @@ let g:quicktex_sh = {
 			\'f' : "for <+++> in <++>; do\n<++>\ndone;",
 			\'if' : "if [ <+++> ];\nthen\n<++>\nfi;",
 			\'ca' : "case <+++> in\n<++>) <++>;;\nesac;",
+			\'sh' : "#!/bin/sh",
 			\}

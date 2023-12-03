@@ -38,6 +38,10 @@ map [normal] J navigate left
 map [normal] K navigate next
 map [normal] L navigate previous
 map [normal] [ navigate right
+map [normal] F navigate left
+map [normal] D navigate next
+map [normal] S navigate previous
+map [normal] A navigate right
 
 # Inverse colors.
 map i recolor
@@ -57,11 +61,14 @@ set selection-clipboard clipboard
 set font "Victor Mono Semibold 10"
 
 # Color
-set statusbar-bg \#000000
-set statusbar-fg \#FFFFFF
+set default-bg "#000000"
+set default-fg "#FFFFFF"
+# set recolor-darkcolor \#000000
+# set statusbar-bg "#000000"
+# set statusbar-fg "#FFFFFF"
 
 # Keybindings
-# map <C-d> ":exec kitty 'lf $(dirname $FILE)'"
+# map <C-d> ":exec kitty 'lfub $(dirname $FILE)'"
 map <C-n> feedkeys ":exec zathura $FILE<Return>"
 
 # BROWSER

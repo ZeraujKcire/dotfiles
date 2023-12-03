@@ -464,15 +464,10 @@
 /home/usuario/Música/ERICK/TEMPORARIES/De Osos/Todo el Ruido Entre Nosotros/5 - Campo de Terror Absoluto.mp3
 /home/usuario/Música/ERICK/TEMPORARIES/De Osos/Todo el Ruido Entre Nosotros/8 - De Cualquier Forma Te Va a Destruir.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Deafheaven/New Bermuda/Brought to the Water.mp3
-/home/usuario/Música/ERICK/MUSIC/Deafheaven/New Bermuda/01 - Brought to the Water.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Deafheaven/New Bermuda/Luna.mp3
-/home/usuario/Música/ERICK/MUSIC/Deafheaven/New Bermuda/02 - Luna.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Deafheaven/New Bermuda/Baby Blue.mp3
-/home/usuario/Música/ERICK/MUSIC/Deafheaven/New Bermuda/03 - Baby Blue.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Deafheaven/New Bermuda/Come Back.mp3
-/home/usuario/Música/ERICK/MUSIC/Deafheaven/New Bermuda/04 - Come Back.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Deafheaven/New Bermuda/Gifts for the Earth.mp3
-/home/usuario/Música/ERICK/MUSIC/Deafheaven/New Bermuda/05 - Gifts for the Earth.mp3
 /home/usuario/Música/ERICK/FildoDownloads/Dean Martin/You're Nobody Till Somebody Loves You.mp3
 /home/usuario/Música/ERICK/MUSIC/Dean Martin/Essential Soundtracks Disc 2/10 - You're Nobody Till Somebody Loves You.mp3
 /home/usuario/Música/ERICK/TEMPORARIES/Death Cab for Cutie/Plans/5 - I Will Follow You into the Dark.mp3

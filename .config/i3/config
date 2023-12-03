@@ -20,7 +20,7 @@ font pango:Victor Mono SemiBold 10
 floating_modifier $mod
 
 bindsym $mod+Return exec kitty
-bindsym $mod+b exec tabbed -c surf -e www.google.com & disown
+# bindsym $mod+b exec tabbed -c surf -e www.google.com & disown
 
 # Window kill command
 bindsym $mod+q kill
@@ -35,10 +35,11 @@ bindsym $mod+i exec xcalib -i -a
 # start program launcher
 bindsym $mod+n exec kitty 'lfub'
 bindsym $mod+m exec "kitty cmus";
-# bindsym $mod+g exec "kitty links www.google.com"
-bindsym $mod+g exec "kitty w3m -o display_image=0 -cookie -num www.google.com"
+bindsym $mod+g exec "kitty links www.google.com"
+bindsym $mod+Shift+g exec links2 -g www.google.com
+bindsym $mod+Ctrl+g exec surf www.google.com
+# bindsym $mod+g exec "kitty w3m -o display_image=0 -cookie -num www.google.com"
 bindsym $mod+w exec "kitty links https://libgen.rs"
-bindsym $mod+Shift+g exec surf www.google.com
 bindsym $mod+p exec "kitty htop"
 bindsym $mod+t exec telegram-desktop
 
@@ -247,7 +248,7 @@ mode "resize" {
 
 # Autostart applications
 # exec_always --no-startup-id xwallpaper --daemon --zoom /home/usuario/Imágenes/POSSIBLE_WALLPAPERS/m83_hurry.jpg
-exec_always feh --bg-fill /home/usuario/Imágenes/POSSIBLE_WALLPAPERS/tikz_background.png
+exec_always feh --bg-fill /home/usuario/Imágenes/POSSIBLE_WALLPAPERS/tessellations.png
 exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
 exec_always --no-startup-id xset s off;xset -dpms
 

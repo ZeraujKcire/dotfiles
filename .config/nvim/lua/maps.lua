@@ -15,6 +15,8 @@ local g = vim.g
 local api = vim.api
 
 -- single mappings
+-- true: noremap
+-- false: remap
 local function map(mode,key,action,opts)
 	local options = {noremap = true, silent = false}
 	if opts then
@@ -67,30 +69,45 @@ map('n', '<C-q>', '<nop>')
 
 -- === TEXT === (((
 -- Edit Text
-map("", "<M-a>",":'<'>!column -t -s ''<left>")
+-- cmd([[
+-- function! Col(separator)
+-- execute ':!column -n -t -s "' . a:separator . '"'
+-- endfunction
+-- vnoremap <M-a> :'<'>call Col('')<left><left>
+-- ]])
+-- . '" -o "' . a:separator . '"'
+-- map("", "<M-a>",":let sep='' | execute '!column -t -s &sep -o &sep'<Home><right><right><right><right><right><right><right><right><right><right><right><right><right><right>")
+map('','<M-a>',":!column -t -s ''<left>")
 map('','s',':s///g<left><left><left>')
-map('','<C-s>','"cyw:s///g<left><left><left><C-r>c<right>')
+map('','<C-s>','"cyE:s///g<left><left><left><C-r>c<right>')
 map('n','S',':%s///g<left><left><left>', false)
+map('i','<C-BS>','<Esc>BcW')
+
 -- Cancel all g mappings
 cmd([[
 function! SuppressAllStartingWith(c1)
-  let c2 = nr2char(getchar())
-  if maparg(a:c1.c2, 'n') != ''
-    return a:c1.c2
-  else
-    return '\<Nop>'
-  endif
+	let c2 = nr2char(getchar())
+	if maparg(a:c1.c2, 'n') != ''
+		return a:c1.c2
+	else
+		return '\<Nop>'
+	endif
 endfunction
-nnoremap <expr> g SuppressAllStartingWith('g')
+noremap <nowait> <silent> g SuppressAllStartingWith('g')
 ]])
+map('','g','<Nop>',false)
+map('','gv','<Nop>')
+
 -- Capitalization
-map('n','g','gu',false)
-map('v','g','gu')
-map('n','G','gU',false)
-map('v','G','gU')
+map('n','<M-v>','gv')
+map('n','<C-g>','vgu')
+map('v','<C-g>','gu',false)
+map('n','G','vgU')
+map('v','G','gU',false)
+-- map('x','h','~',false)
 map('n','h','~',false)
 map('v','h','~',false)
-map('n', 'gv', 'gv')
+
 -- Separate lines
 map("n","z",":s/\\s\\+/\\r/g<CR>",false)
 map("v","z",":s/\\s\\+/\\r/g<CR>",false)
@@ -99,9 +116,10 @@ map('n','<C-z>','J') -- adding space
 map('v','<C-z>','J')
 map('n','<M-z>','gJ') -- no space
 map('v','<M-z>','gJ')
+
 -- Add at begin and the end of line
-map('n','<C-a>',":norm A")
-map('n','<C-i>',":norm I")
+-- map('n','<C-a>',":norm A")
+-- map('n','<C-i>',":norm I")
 map('v','<C-a>',":norm A")
 map('v','<C-i>',":norm I")
 -- map('v','i','I')
@@ -111,15 +129,15 @@ cmd([[vmap <C-1> :<c-u>let i=1 \| '<,'>g/^/ s//\=i . ' '/ \| let i+=1<CR>]])
 map("n","<C-1>", ":r !printf '\\%s\\n' {1..}<left>")
 map("i","<C-1>", "<Esc>:r !printf '\\%s\\n' {1..}<left>")
 -- Alphabetical numbering
-cmd([[vmap <C-2> :<c-u>let i=0 \| '<,'>g/^/ s//\=nr2char(char2nr('a')+i) . ' '/ \| let i+=1<CR>]])
-map("n","<C-2>", ":r !printf '\\%s\\n' {a..}<left>")
-map("i","<C-2>", "<Esc>:r !printf '\\%s\\n' {a..}<left>")
+-- cmd([[vmap <C-2> :<c-u>let i=0 \| '<,'>g/^/ s//\=nr2char(char2nr('a')+i) . ' '/ \| let i+=1<CR>]])
+-- map("n","<C-2>", ":r !printf '\\%s\\n' {a..}<left>")
+-- map("i","<C-2>", "<Esc>:r !printf '\\%s\\n' {a..}<left>")
 -- Replace 0 with arabic numbering
 cmd([[vmap <C-0> :<c-u>let i=1 \| '<,'>g/0/ s//\=i /g \| let i+=1<CR>]])
--- cmd([[vmap <C-0> :<c-u>let i=1 \| '<,'>g/0/ s//\=i / \| let i+=1<CR>]])
+cmd([[vmap <C-1> :<c-u>let i=1 \| '<,'>g/0/ s//\=i / \| let i+=1<CR>]])
 -- Replace 0 with alphabetical numbering
 cmd([[vmap <M-0> :<c-u>let i=0 \| '<,'>g/0/ s//\=nr2char(char2nr('a')+i) /g \| let i+=1<CR>]])
--- cmd([[vmap <M-0> :<c-u>let i=0 \| '<,'>g/0/ s//\=nr2char(char2nr('a')+i) / \| let i+=1<CR>]])
+cmd([[vmap <M-1> :<c-u>let i=0 \| '<,'>g/0/ s//\=nr2char(char2nr('a')+i) / \| let i+=1<CR>]])
 -- )))
 
 -- === TERMINAL === (((
@@ -162,12 +180,15 @@ map('v','<C-l>',":move '<-2<CR>gv-gv")
 map('v','<C-k>',":move '>+1<CR>gv-gv")
 map('v','<C-ñ>','>gv')
 map('v','<C-j>','<gv')
+map('i','<C-ñ>','<Esc>V>gv<Esc>A')
+map('i','<C-j>','<Esc>V<gv<Esc>A')
 map('','<','<Nop>',false)
 map('','>','<Nop>',false)
 map('n','<C-ñ>','V>gv')
 map('n','<C-j>','V<gv,')
 map('n','<C-l>',"V:move '<-2<CR>gv-gv")
 map('n','<C-k>',"V:move '>+1<CR>gv-gv")
+-- map('n','<C-y>','\"ayw')
 -- )))
 
 -- === IDENTATIONS === (((
@@ -184,13 +205,24 @@ map('i','<C-c>','<ESC>:call ToggleComment()<CR>A')
 -- )))
 
 -- === AUTOCOMPLETE === (((
+-- Double
 map('i','"','"" <++><Esc>6ha')
 map('i',"'","'' <++><Esc>6ha")
 map('i','(','() <++><Esc>6ha')
 map('i','[','[] <++><Esc>6ha')
 map('i','{','{} <++><Esc>6ha')
 map('i','¿','¿? <++><Esc>6ha')
+map('i','¡','¡!<++><Esc>6ha')
 map('i','<','<> <++><Esc>6ha')
+-- Single
+map('i','<C-2>','"')
+map('i',"<C-'>","'")
+map('i','<C-8>','(')
+map('i','<C-¿>','¿')
+map('i','<C-lt>','<')
+-- map('i','','[] <++><Esc>6ha')
+-- map('i','{','{} <++><Esc>6ha')
+-- Disable double
 map('n', '<C-i>', ":iu \"<CR>:iu '<CR>:iu (<CR>:iu [<CR>:iu {<CR>:iu ¿<CR>:iu <<CR>")
 -- cmd([[nmap <S-Tab> :exec printf("imap \" \"\" <++>\<Esc>6ha<CR> imap ' '' <++>\<Esc>6ha<CR> imap ( () <++>\<Esc>6ha<CR> imap [ [] <++>\<Esc>6ha<CR> imap { {} <++>\<Esc>6ha<CR> imap ¿¿? <++>\<Esc>6ha<CR> imap < <> <++>\<Esc>6ha<CR>")]])
 -- )))
@@ -241,7 +273,7 @@ au_m("FileType", TeX, "tex", function() map('n', '<M-b>', ':!bibtex %:r<CR>' , f
 au_c("BufReadPre", TeX, "*.log", "set filetype=log")
 -- au_c("FileType", TeX, "DEF", "set syntax=tex")
 -- au_c("FileType", TeX, "CFG", "set syntax=tex")
-au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':7sp %:r.log<CR>/^l\\.\\d<CR>ll"bye<C-w>k:<C-r>b<CR>', false) end)
+au_m("FileType", TeX, "tex", function() map('n', '<C-o>', ':11sp %:r.log<CR>/^l\\.\\d<CR>ll"bye<C-w>k:<C-r>b<CR>', false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-O>', ':sp %:r.log<CR>/^l\\.\\d<CR>', false) end)
 au_m("FileType", TeX, "tex", function() map('n', '<M-o>', ':vs %:r.log<CR>/^l\\.\\d<CR>ll"bye<C-w>h:<C-r>b<CR>', false) end)
 -- https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
@@ -265,6 +297,7 @@ au_m("FileType", Rg, "r", function() map('n', '<M-t>', ':vs<CR>:term<CR><Esc>:se
 au_m("FileType", Rg, "r", function() map('n', '<M-c>', ':sp<CR>:term<CR><Esc>:set wrap<CR>:set nornu nonu<CR>AR<space>--no-save<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<M-r>', ':au BufWritePost *.r ! Rscript % > output.txt<CR><CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-o>', ':vs output.txt<CR>',false) end)
+au_m("FileType", Rg, "r", function() map('n', '<M-o>', ':sp output.txt<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('n', '<C-p>', ':vs functions.r<CR>',false) end)
 -- au_m("FileType", Rg, "r", function() map('n', '<C-d>', ':vs datos.txt<CR>',false) end)
 au_m("FileType", Rg, "r", function() map('t', '<C-q>', '<Esc>iq()<CR>exit<CR>') end)
@@ -278,7 +311,8 @@ au_m("FileType", Py, "python", function() map('n', '<M-p>', ':au BufWritePost *.
 au_m("FileType", Py, "python", function() map('n', '<M-t>', ':vs<CR>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-j>',false) end)
 au_m("FileType", Py, "python", function() map('n', '<M-c>', ':sp<CR>:term<CR>Apython3<CR><Esc>:set wrap<CR>:set nornu nonu<CR><M-l>',false) end)
 au_m("FileType", Py, "python", function() map('n', '<M-e>', ':au BufWritePost *.py !python3 % > output.txt<CR>',false) end)
-au_m("FileType", Py, "python", function() map('n', '<C-o>', ':sp output.txt<CR>',false) end)
+au_m("FileType", Py, "python", function() map('n', '<C-o>', ':vs output.txt<CR>',false) end)
+au_m("FileType", Py, "python", function() map('n', '<M-o>', ':sp output.txt<CR>',false) end)
 au_m("FileType", Py, "python", function() map('n', '<C-p>', ':topleft vs functions.py<CR>',false) end)
 au_m("FileType", Py, "python", function() map('t', '<C-q>', '<Esc>iexit()<CR>exit<CR>',false) end)
 -- )))
@@ -327,7 +361,9 @@ au_m("FileType", INFO, 'info', function () map('n', '<C-s>', "vip:'<,'>norm I [/
 
 -- === TXT === (((
 local TXT = api.nvim_create_augroup("Txtgroup", {clear = true})
-au_c('BufReadPre', TXT, '*.txt', "set syntax=python")
+au_c('BufReadPost', TXT, '*.txt', "set ft=python")
+-- cmd([[au Syntax txt runtime! syntax/python.vim]])
+-- cmd([[au BufNewFile,BufRead *.txt set syntax=python]])
 -- -- )))
 
 -- === COLOR PICKER === (((

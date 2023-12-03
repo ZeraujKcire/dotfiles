@@ -14,6 +14,7 @@ local cmd = vim.cmd
 local g   = vim.g
 local wo  = vim.wo
 local bo  = vim.bo
+local b = vim.b
 local fn  = vim.fn
 local opt = vim.opt
 local api = vim.api
@@ -69,6 +70,8 @@ bo.autoindent  = false
 bo.cindent     = false
 bo.smartindent = false
 bo.indentexpr  = ''
+b.indentexpr = ""
+b.did_indent = 1
 bo.fo          = 'jql'
 vim.api.nvim_command('filetype indent off')
 o.splitright = true
@@ -113,6 +116,7 @@ let s:comment_map = {
     \   "sty": '%',
     \   "tex": '%',
     \   "text": '#',
+		\   "tmux": '#',
 		\   "toml": '#',
     \   "vim": '"',
 		\   "yaml": '#',
