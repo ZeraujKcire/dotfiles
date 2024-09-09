@@ -1,0 +1,7 @@
+NOMBRE          EDAD  VOL  PRECIO
+TURU_S.A        NA    2.1  120065.00
+Aspen_Brothers  4     2.7  127050.60
+Spomasz         50    2.7  140803.50
+Spomasz         29    2.7  130106.80
+Sin_dato        NA    3.5  217250.00
+Manesty         34    3.2  218300.00

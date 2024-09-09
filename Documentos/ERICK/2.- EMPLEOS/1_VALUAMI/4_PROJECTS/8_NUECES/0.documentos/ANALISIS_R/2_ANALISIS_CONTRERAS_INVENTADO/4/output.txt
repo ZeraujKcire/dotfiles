@@ -1,0 +1,87 @@
+[1] "--- 2 GRAFICO DE DISPERSION ---"
+[1] "--- 3.1 HOMOCEDASTICIDAD ---"
+
+	studentized Breusch-Pagan test
+
+data:  regresion
+BP = 2.928, df = 2, p-value = 0.2313
+
+[1] "--- 3.2 INDEPENDIENCIA ---"
+
+	Durbin-Watson test
+
+data:  regresion
+DW = 2.0731, p-value = 0.5864
+alternative hypothesis: true autocorrelation is greater than 0
+
+[1] "--- 3.3 NORMALIDAD ---"
+
+	Shapiro-Wilk normality test
+
+data:  residuales
+W = 0.95492, p-value = 0.7742
+
+
+	One-sample Kolmogorov-Smirnov test
+
+data:  residuales
+D = 0.17907, p-value = 0.9496
+alternative hypothesis: two-sided
+
+[1] "--- 4 ESTIMACION DE BETA_i ---"
+
+Call:
+lm(formula = Y ~ X1 + X2, data = datos, na.action = "na.exclude")
+
+Coefficients:
+(Intercept)           X1           X2  
+     274195        -4471        -8726  
+
+[1] "--- 5 DATOS ATÍPICOS ---"
+[1] "Se usa la grafica de la sección 3.2"
+[1] "--- 6 TABLA ANOVA ---"
+[1] "TABLA ANOVA. NUEVA"
+          Suma Cuadrados Grados Lib. Cuadrados Medios        F
+Regresión    32120532274           2      16060266137 3.489845
+Error        18407998180           4       4601999545 0.000000
+Totales      50528530454           6      20662265682 0.000000
+[1] "--- 7 SIGNIFICANCIA ---"
+
+Call:
+lm(formula = Y ~ X1 + X2, data = datos, na.action = "na.exclude")
+
+Residuals:
+     1      2      3      4      5      6      7 
+-50041  60848 -24185   5995 -72394    156  79621 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   274195     119518   2.294   0.0835 .
+X1             -4472       1700  -2.631   0.0581 .
+X2             -8726       8437  -1.034   0.3594  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 67840 on 4 degrees of freedom
+Multiple R-squared:  0.6357,	Adjusted R-squared:  0.4535 
+F-statistic:  3.49 on 2 and 4 DF,  p-value: 0.1327
+
+[1] "--- 8.1 PH BETA_0 ---"
+              Estimate Std. Error   t value   Pr(>|t|)
+(Intercept) 274195.337 119517.705  2.294182 0.08347179
+X1           -4471.492   1699.701 -2.630752 0.05814041
+X2           -8726.402   8436.580 -1.034353 0.35940445
+[1] " --- 10 OBSERVACIONES INFLIYENTES --- "
+Influence measures of
+	 lm(formula = Y ~ X1 + X2, data = datos, na.action = "na.exclude") :
+
+    dfb.1_    dfb.X1   dfb.X2    dffit    cov.r   cook.d   hat inf
+1 -0.36916  8.51e-02  0.35225 -0.52086 1.76e+00 9.78e-02 0.280    
+2 -0.58308  1.04e+00  0.44319  1.25266 1.08e+00 4.35e-01 0.465   *
+3  0.18109 -6.03e-02 -0.27797 -0.35624 3.46e+00 5.33e-02 0.421   *
+4  0.04282  4.65e-02 -0.06509  0.12701 5.22e+00 7.14e-03 0.552   *
+5 -0.43010  3.82e-01  0.22142 -0.67453 7.84e-01 1.29e-01 0.212    
+6 -0.00114  3.78e-04  0.00174  0.00223 4.10e+00 2.22e-06 0.421   *
+7 13.99598 -1.59e+01 -8.15401 18.01102 3.24e-05 2.43e+00 0.650   *
+[1] " --- 11 COEFICIENTE DE DETERMINACIÓN --- "
+[1] 0.635691

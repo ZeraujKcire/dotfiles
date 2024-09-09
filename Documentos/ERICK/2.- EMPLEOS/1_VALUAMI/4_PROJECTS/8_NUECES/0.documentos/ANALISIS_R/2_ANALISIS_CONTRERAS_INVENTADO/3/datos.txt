@@ -1,0 +1,5 @@
+NOMBRE          EDAD  VOL  PRECIO
+Aspen_Brothers  4     2.7  42972.11
+Spomasz         50    2.7  47623.73
+Spomasz         29    2.7  44005.80
+Manesty         34    3.2  73835.24

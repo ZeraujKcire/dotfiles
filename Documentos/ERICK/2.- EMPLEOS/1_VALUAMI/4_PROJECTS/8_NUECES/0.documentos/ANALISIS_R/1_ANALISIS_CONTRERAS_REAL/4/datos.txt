@@ -1,0 +1,7 @@
+NOMBRE          EDAD  POT  PRECIO
+GKW_Gera        32    7    26196.00
+Ingresoll_Rand  51    10   25181.25
+Ingresoll_Rand  21    15   32172.75
+Worthington     51    5    10862.50
+Speedaire       18    10   43450.00
+Boge            21    15   65490.00

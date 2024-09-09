@@ -1,0 +1,10 @@
+
+NOMBRE           EDAD  CAP   PRECIO
+Sthal            27    2     41477.00
+Konecranes       7     1.6   33836.50
+DEMAG            25    1     48026.00
+BUDGIT_LIFTTECH  25    2     34000.00
+KONECRANES       11    1.6   40385.50
+Dayton           NA     2     25813.25
+DEMAG            45    2.2   41477.00
+

@@ -1,0 +1,107 @@
+
+\chapter{ENFOQUE DE MERCADO.} %(((
+
+\section{PRIMER MÁQUINA.} % (((
+
+\subsection{--- Enfoque de Mercado. ---} % (((
+\includegraphics[width=  \linewidth]{}
+% )))
+
+\subsection{--- Matriz de Dispersion ---} % (((
+
+Se tiene la siguiente gráfica.
+
+\begin{center}
+  \begin{tabular}{|p{11cm}|p{5cm}|}
+    \hline
+    Gráfica & Interpretación. \\ \hline 
+    \begin{minipage}{\textwidth}
+    \includegraphics[width= 0.6 \linewidth, page=1]{}
+    \end{minipage} 
+    &
+% Interpret 
+		\\ \hline 
+  \end{tabular}
+\end{center} 
+% )))
+
+\subsection{--- Modelo de Regresión ---} % (((
+El modelo de regresión lineal planteado tiene las sig. variables:
+\begin{table}[hbtp!]
+	\centering
+	\begin{tabular}{r @{: \hspace{5mm}} l}
+		\hline 
+		X1 &  \\ \hline
+		X2 &  \\ \hline
+		X3 &  \\ \hline
+		Y  &  \\ \hline
+	\end{tabular}
+\end{table}
+Se obtiene el modelo de regresión lineal con los datos obtenidos. \\ 
+\begin{equation}
+	Y = 
+	\label{eq:1}
+\end{equation}
+% )))
+
+\subsection{--- Tabla ANOVA ---} % (((
+Tomamos el valor de confianza para el análisis estadístico de un \(95\%\). (\(\alpha =0.05\)). \\ 
+Se realiza la tabla ANOVA.
+\begin{center}
+  \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|l|}
+    \hline 
+    Fuentes de Variación  & Suma de Cuadrados & Grados de Libertad & Cuadrados Medios & F\\ \hline 
+    Regresión           & \(41,414.76\) &           \(3\) &        \(13,804.92\) & \(50.83\) \\ \hline 
+    Error               & \(12,222.50\) &          \(45\) &          \(271.6111\) &   \\ \hline 
+    Totales             & \(53,637.27\) &          \(48\) &         &   \\ \hline 
+  \end{tabular}
+\end{center} 
+% )))
+
+\subsection{--- Prueba de Significancia del Modelo ---} % (((
+
+Se obtiene el coef. de corr. lineal de Pearson
+
+\begin{table}[hbtp!]
+	\centering
+	\begin{tabular}{|p{2cm}|p{2cm}|}
+		\hline 
+		\(r ^ 2\) &  \\ \hline 
+	\end{tabular}
+\end{table}
+
+Se comprueba el modelo con la prueba de significancia del estadístico \(F\) de la tabla ANOVA.
+
+\begin{center}
+  \begin{tabular}{|l|p{11cm}|}
+    \cline{1-2}
+    \multicolumn{2}{|c|}{Hipótesis}\\ \cline{1-2}
+    \multicolumn{2}{|l|}{\(H_0:\) El modelo no es significativo.} \\ 
+    \multicolumn{2}{|l|}{\(H_a:\) El modelo es significativo.} \\ \cline{1-2}
+    Estadístico de Prueba & \(50.83\).\\ \cline{1-2} 
+    Región de Rechazo & \((0, \alpha )\).\\ \cline{1-2} 
+    Valor \(p\) & \(1.7e-14\).\\ \cline{1-2} 
+    Conclusión & Se tiene que \(p<\alpha\), por tanto se rechaza \(H_0\). Es decir, el modelo es significativo.\\ \cline{1-2} 
+  \end{tabular}
+\end{center} 
+% \textbf{Conclusión:} Se rechaza el modelo lineal para determinar el precio del activo, dado que no es significativo. \\ 
+% Por tanto, se procede con el análisis de 
+% \textbf{Conclusión:} Se acepta el modelo lineal para determinar el precio del activo a un \(95\%\) de confianza. \\ 
+% Los datos de el activo son los siguientes:
+% \begin{table}[hbtp!]
+	% \centering
+	% \begin{tabular}{|p{2cm}|p{2cm}|}
+		% X0 & \\ \hline 
+		% X0 & \\ \hline 
+		% X0 & \\ \hline 
+		% X0 & \\ \hline 
+	% \end{tabular}
+% \end{table}
+% Así, el precio del activo aplicado al modelo lineal \eqref{eq:1}, se obtiene 
+% \(Y = \).
+% )))
+
+% )))
+
+% )))
+
